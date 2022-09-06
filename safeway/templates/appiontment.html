@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% load humanize %}
+
+
+<!-- title section -->
+{% block title %} | Home | Appointment Summary{% endblock title %}
+
+
+<!-- upper header section -->
+{% block header %} {% include 'header.html' %} {% endblock header %}
+
+
+<!-- banner section -->
+{% block banner %}
+
+{% endblock banner %}
+
+<!-- content section -->
+{% block content %}
+<div class="container pt-5 pb-5">
+    <div class="row justify-content-between">
+        <div class="col-md-6">
+
+        </div>
+
+        <div class="col-md-6">
+            <span>Your Appointment Summary</span>
+            
+            {% if his %}
+                {% for item in his %}
+                    <div class="col">
+                        <label for="firstName"><strong>First Name</strong></label>
+                        <p>{{item.firstname}}</p>
+                    </div>
+                    <div class="col">
+                        <label for="LastName"><strong>Product</strong></label>
+                        <p>{{item.pricing}}</p>
+                    </div>
+                    <div class="col">
+                        <label for="Services"><strong>Services</strong></label>
+                        <p>{{item.ordr_no}}</p>
+                    </div>
+                  
+                {% endfor %}
+                
+            {% endif %}
+                
+            <div class="appt-summary">
+                <div class="col">
+                    <label for="PhoneNumber"><strong>Phone Number</strong></label>
+                    <p>{{his.itm_paid}}</p>
+                </div>
+                <div class="col">
+                    <label for="Email"><strong>Email</strong></label>
+                    <p>{{appoint.email}}</p>
+                </div>
+                <div class="col">
+                    <label for="Date"><strong>Date</strong></label>
+                    <p>{{appoint.apptdate}}</p>
+                </div>
+                <div class="col">
+                    <label for="Time"><strong>Time</strong></label>
+                    <p>{{appoint.appt_time}}</p>
+                </div>
+                <div class="col">
+                    <label for="Message"><strong>Message</strong></label>
+                    <p>{{appoint.symptoms}}</p>
+                </div>
+
+                <small class="col-md-6 text-muted">
+                    A non-refundable amount of <span class="text-success" style="font-size: 1rem;">${{appoint.price}} </span>will be paid
+                </small>
+                {% comment %}
+                {% endcomment %}
+
+
+
+                {% if appointy %}
+                    {% for item in appointy %}
+                        <button class="butin btn btn-outline-danger mt-3"><a class="text-decoration-none" href="{% url 'checkout_sub' item.id %}">Confirm Booking</a></button>
+                        <!-- <button class="w-50 pricin-but "><a href="" class="btn text-decoration-none"><strong>GET OFFER</strong></a></button> -->
+                    {% endfor %}                    
+                {% endif %} 
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+
+
+<br><br><br><br>
+<!-- footer content -->
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

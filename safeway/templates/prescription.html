@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+
+
+{% load static %}
+{% load humanize %}
+
+
+<!-- title section -->
+{% block title %} | Prescription{% endblock title %}
+
+
+<!-- upper header section -->
+{% block header %} {% include 'header.html' %} {% endblock header %}
+
+
+
+{% block banner %}
+
+{% endblock banner %}
+
+<!--content -->
+{% block content %}
+<div class="container-flui">
+    <div class="row justify-content-start">
+        <div class="col-12 col-md-3">
+            <nav class="navbar navbar-expand-sm navbar-light bg-transparent nav-edit">
+                <a class="navbar-toggler border-0" type="button" data-toggle="collapse" href="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <span class="navbar-toggler-icon bg-primary rounded" style="font-size: 1rem;"></span>
+                    <!-- <span><strong>SideBar</strong></span> -->
+                </a>
+                <a class="navbar-brand mb-5 pb-5 mt-4 anak" id="home" href="{% url 'index' %}">Home</a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="display: inline-block;">
+                        <a class="nav-link mb-3 link-edit" href="{% url 'dashboard' %}">Dashboard</a>
+                        <a class="nav-link mb-3 profdit" href="{% url 'proedit' %}">Update</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'cart' %}">Cart</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'pharmacy' %}">Shop</a>
+                        <a class="nav-link profdit mb-3" href="{% url 'profile' %}"> Profile </a>
+                        <a class="nav-link mb-3 profdit" href="{% url 'recovery' %}">Change Password</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'newappoint' %}">Appointment</a>
+                        <a class="nav-link mb-3 link-edited" href="#item-1">Prescription</a>
+                        <a class="nav-link text-muted link-editt" href="#"><small>Help And Support</small></a>
+                        <a class="nav-link text-muted link-edite" href="#">Preferences</a>
+                    </ul>
+                </div>
+            </nav>
+            
+            {% comment %}
+                <nav id="navbar-example3" class="navbar navbar-light bg-transparent w-75 nav-edit">
+                <a class="navbar-brand mb-5 pb-5 mt-4 text-primary" href="{% url 'index' %}">Home</a>
+                <nav class="nav" style="display: block;">
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'dashboard' %}">Dashboard</a>
+                    <a class="nav-link text-primary mb-3 profdit" href="{% url 'proedit' %}">Edit Profile</a>
+                    <!-- <nav class="nav nav-pills flex-column">
+                        <a class="nav-link text-primary mb-3 link-edit ml-3 my-1" href="#item-1-1">Item 1-1</a>
+                        <a class="nav-link text-primary mb-3 link-edit ml-3 my-1" href="#item-1-2">Item 1-2</a>
+                    </nav> -->
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'cart' %}">Cart</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'pharmacy' %}">Shop</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="#">Doctors</a>
+                    <a class="nav-link text-primary profdit mb-3" href="{% url 'profile' %}"> View Profile </a>
+                    <a class="nav-link text-primary mb-3 profdit" href="{% url 'recovery' %}">Change Password</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'index' %}">Appointment</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="#item-1">Prescription</a>
+                    <!-- <nav class="nav nav-pills flex-column">
+                        <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a>
+                        <a class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
+                    </nav> -->
+                    <a class="nav-link text-muted link-editt" href="#"><small>Help And Support</small></a>
+                    <a class="nav-link text-muted link-edit" href="#">Preferences</a>
+                </nav>
+                </nav>
+                
+            {% endcomment %}
+                
+            
+        </div>
+        <div class="col-12 col-md-9 profile-col">
+            <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+                <p id="item-1">
+                    <div class="patient-edit">
+                        <div class="container-flui">
+                            <div class="">
+                                <div class="col-12 bg-light table-responsive">
+                                    <h4 class="anak pt-5">Patient Prescription</h4>
+                                    <hr>
+                                    <br>
+                                    <table class="table ">
+                                        <thead class="tabhead">
+                                            <tr>
+                                                <th scope="col" class="pris-table">#/ID</th>
+                                                <th scope="col" class="pris-table ml-2">Title</th>
+                                                <th scope="col" class="pris-table ml-2">Created by</th>
+                                                <th scope="col" class="pris-table ml-2">Date</th>
+                                                <th scope="col" class="pris-table ml-2">Diseases</th>
+                                                <th scope="col" class="pris-table ml-2">Content</th>
+                                                <th scope="col" class="pris-table ml-2">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% if prescripy %}
+                                                {% for items in prescripy %}
+                                                    <tr>
+                                                        <th scope="row" class="pris-content" style="font-size: 1rem;"><small>{{items.prescrip_code}}</small></th>
+                                                        <th scope="col" class="pris-content" style="font-size: 1rem;"><small>{{items.title}}</small></th>
+                                                        <th scope="col" class="pris-content">
+                                                            <img src="{{items.image.url}}" class="ml-3" height="30" width="30"><br>
+                                                            <small class="doc text-primary" style="font-size: 1rem;">{{items.name_of_doc}}</small>
+                                                        </th>
+                                                        <th scope="col" class="pris-content" style="font-size: 1rem;"><small>{{items.created}}</small></th>
+                                                        <th scope="col" class="pris-content">
+                                                            <h4><span class="badge badge-transparent text-danger" style="border: 1px solid red;font-size: 1rem;">{{items.disease}}</span></h4>
+                                                        </th>
+                                                        <th scope="col" class="pris-content" style="font-size: 1rem;"><small>{{items.content}}</small></th>
+                                                        <th scope="col" class="pris-content d-flex" style="font-size: 1rem;"><small>
+                                                            <button type="submit" class="border-0 bg-transparent anak"><i class="fas fa-eye"></i></button>
+                                                            <button type="submit" class="border-0 bg-transparent anak"><i class="fas fa-print ml-2"></i></button>
+                                                            <form action="{% url 'remove_prescription' %}" method="POST">
+                                                            {% csrf_token %}
+                                                                <input type="hidden" name="deleteprescrip" value="{{items.id}}">
+                                                                <button type="submit" class=" border-0 bg-transparent anak"><i class=" fas fa-trash"></i></button>
+                                                            </form>
+                                                            <!-- <a href=""><i class=" fas fa-trash ml-2"></i></a> -->
+                                                        </small></th>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+  
+<!-- footer content -->
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

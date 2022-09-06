@@ -1,0 +1,158 @@
+{% load static %}
+
+{% extends 'base.html' %}
+
+{% load humanize %}
+
+{% load mathfilters %}
+
+{% block title %} | User Profile {% endblock title %}
+    
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+
+
+{% block banner %}
+    
+{% endblock banner %}
+
+
+{% block content %}      
+<div class="container">
+    <div class="row cart-row">
+        <div class="col-md-9 semi-cart">
+            <div class="container">
+                <div class="return-cus container bg-light mb-3 w-100" style="border-top: 1px solid #3C1642;">
+                    <div class="return d-flex">
+                        <p class="prod"><i class="fa-solid fa-calendar text-primary mt-3"></i> Returning Customer ?</p>
+                        <a href="{% url 'loggin' %}" class="text-decoration-none ml-2 mt-3 anak">Click here to login</a>
+                    </div>
+                </div>
+                <div class="card cart-card">
+                    <div class="card-header">
+                        <ul class="nav nav-pills">
+                            <li class="nav-item">
+                                <a class="nav-link btn im card-but" href="{% url 'pharmacy' %}">Continue Shopping</a>
+                            </li>
+                            <li class="nav-item ml-auto">
+                                <a class="nav-link btn logg" href="#" type="reset">Empty Cart</a>
+                            </li>
+                        </ul>
+                    </div>
+                    {% if carty %}
+                        {% for items in carty %}
+                            <div class="card-body cart-div">
+                                <div class="card-d mb-3">
+                                    <img src="{{items.pharmacy.image.url}}" class="rounded-image" alt="..." height="150" width="150">
+                                    <div class="til">
+                                        <h5 class="card-title prod-title"><a href="{% url 'pharmacy' %}" class="w text-decoration-none text-primary"><strong>{{ items.product_name }}</strong></a></h5>
+                                        <p class="card-text log">Price: <span class="anak">£{{items.pharmacy.price|floatformat:2}}</span></p>
+                                        <p class="card-title log">Quantity: {{items.quantity}}</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
+                                </div>
+                
+                                <div class="card-foot ml-auto">
+                                    <form action="{% url 'remove_item' %}" method="POST">
+                                    {% csrf_token %}
+                                        <input type="hidden" name="deleteitem" value="{{items.id}}">
+                                        <button type="submit" class="qi border-0 bg-transparent"><p class="card-text"><i class="fa-solid fa-xmark fa-2x log"></i></p></button>
+                                    </form>
+                                    <h4>Total: £{{items.pharmacy.price|mul:items.quantity|floatformat:2}}</h4>
+                                </div>
+                                
+                                <!-- <div class="dropdown-divider"></div><div class="dropdown-divider"></div> -->
+                            </div>
+                            <hr>
+                        {% endfor %}
+                    
+                    {% endif %}
+                        
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <div class="cart-summary text-center bg-light">
+                
+                <div class="cart-total d-flex container mt-3">
+                    <p>Your Cart Total:</p>
+                    <h4 class="qy text-primary ml-auto">£{{subtotal}}</h4>
+                </div>
+
+                <div class="prod d-flex container mt-3">
+                    <p>VAT:</p>
+                    <h4 class="qy text-primary ml-auto">{{vat}}</h4>
+                </div>
+            
+
+                <div class="cart-sum d-flex container mt-3">
+                    <p>SUM TOTAL</p>
+                    <h4 class="qy text-success ml-auto">{{total}}</h4>
+                </div>
+                
+                {% comment %}
+                <a href="{% url 'checkout' %}" class="btn btn-outline-primary mb-2">Secure Checkout</a><br>
+                  
+                {% endcomment %}
+                <button type="button" class="btn im mb-2" data-toggle="modal" data-target="#bd-example-modal-lg" data-whatever="@Secure Checkout">Secure Checkout</button><br>
+                <div class="modal fade" id="bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header anak">
+                                <p>Upload Prescription before going to checkout</p>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{% url 'upload_prescrip' %}" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="inputFullname">Fullname</label>
+                                        <input type="text" name="fullname" class="form-control" id="inputFullname" placeholder="fullname" required>
+                                        
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="inputEmail4">Email</label>
+                                            <input type="email" name="email" class="form-control" id="inputEmail4" required>
+                                            
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="inputPhonenumber">Phone Number</label>
+                                            <input type="text" name="phone" class="form-control" id="inputPhonenumber" required>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <label for="exampleFormControlFile1">Upload Your Prescription</label>
+                                        <input type="file" name="document" class="form-control-file ml-5" id="exampleFormControlFile1" required>
+                                        
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="col-form-label">Additional Note</label>
+                                        <textarea class="form-control" name="message" id="message-text"></textarea>
+                                        
+                                    </div>
+                                    <button type="submit"  class="btn im">Send message</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn mi" data-dismiss="modal">Close</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+                <small>Price displayed excludes any applicable taxes.</small>
+                <small></small>
+                <small></small>
+                <small></small>
+            </div> <br>
+            <div class="cv text-muted"><i class="fa-solid fa-lock"></i>Secure checkout</div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    
+
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

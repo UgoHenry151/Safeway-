@@ -1,0 +1,68 @@
+
+{% load static %}
+
+<div class="container">
+    <div class="row topbar">
+      <div class="col-lg-4 col-sm-6 tay">
+          <div><p><i class="fa fa-envelope-o" aria-hidden="true"></i> safewayhospital@gmail.com</p></div>
+          <div><p><i class="fa fa-phone" aria-hidden="true"></i> +2349067819686</p></div>
+      </div>
+      <div class="col-lg-4 col-sm-6 top">
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        <i class="fa fa-instagram" aria-hidden="true"></i>
+        <i class="fa fa-vimeo" aria-hidden="true"></i>
+        <i class="fa fa-skype" aria-hidden="true"></i>
+        <i class="fa fa-snowflake-o" aria-hidden="true"></i>
+      </div>
+      <div class="col-lg-4 col-sm-6 dess">
+        {% if user.is_authenticated %}
+        <button type="button" class=" btn-primary"><a href="{% url 'profile' %}">Profile</a></button> 
+        <button type="button" class=" btn-primary"><a href="{% url 'signout' %}">Sign Out</a></button> 
+        <button type="button" class=" btn-primary"><a href="/cart.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></button>
+        {% else %}
+        <button type="button" class=" btn-primary"><a href="{% url 'signin' %}">Sign In</a></button> 
+        <button type="button" class=" btn-primary"><a href="{% url 'signup' %}">Sign Up</a></button>
+        {% endif %}
+      </div>
+    </div>
+</div>
+<!-- topbar end -->
+<hr>
+<!-- navbar here -->
+<!-- <div class="container" id="home"> -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <a class="navbar-brand" href="/henry.html">Safe<span>Way</span> Hospital</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- <span class="navbar-toggler-icon text-dark"></span> -->
+      <i class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#service">Service</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#appointment">Appointment</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#doctor">Doctors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#department">Department</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#blog">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'pharmacy' %}">Pharmacy</a>
+        </li>
+      </ul>
+    </div>
+</nav>

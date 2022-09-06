@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+
+{% block title %} | SignUp{% endblock title %}
+
+
+{% block header %} 
+
+{% endblock header %}
+    
+
+{% block banner %}
+    
+{% endblock banner %}
+    
+
+
+{% block content %}
+<div id="as">
+    <nav class="navbar navbar-expand-lg bg-transparent">
+        <a class="navbar-brand" href="#">Safe<span>Way</span> Hospital</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <span class="navbar-toggler-icon text-dark"></span> -->
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+    </nav>
+
+    <div class="container mt-4 mb-4">
+        <div class="joy">
+          <h1 class="subject">Contact Information</h1>
+          <div class="d-flex">
+            <h5><em>Already Registered?</em></h5>
+            <button type="button" class="dess btn-primary"><a href="{% url 'signin' %}">Sign In</a></button>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-6 w-50">
+                <div class="form-box w-100">
+                    <form action="{% url 'signup' %}", method="POST"  class="w-100 mx-auto"> 
+                    {% csrf_token %}
+                        <div class="form-group" id="az">
+                          <label for="exampleInputText1">Firstname</label>
+                          <input type="text" name="first_name" class="form-control bg-transparent" id="exampleInputText1" aria-describedby="textHelp">
+                        </div>
+                        <div class="form-group" id="az">
+                          <label for="exampleInputText1">Lastname</label>
+                          <input type="text" name="last_name" class="form-control bg-transparent" id="exampleInputText1" aria-describedby="textHelp">
+                        </div>
+                        <div class="form-group" id="az">
+                          <label for="exampleInputEmail">Email</label>
+                          <input type="email" name="email" class="form-control bg-transparent" id="exampleInputText1" aria-describedby="textHelp">
+                        </div>
+                        <div class="form-group" id="az">
+                          <label for="exampleInputText1">Phone Number</label>
+                          <input type="phone" name="phone_number" class="form-control bg-transparent" id="exampleInputText1" aria-describedby="textHelp">
+                        </div>
+                        <div class="form-group" id="az">
+                          <input type="hidden" name="image" value="profile/profile_icon.jpg" class="form-control bg-transparent" id="exampleInputText1" aria-describedby="textHelp">
+                        </div>
+                        <div class="form-group" id="az">
+                          <label for="exampleInputText1">Username</label>
+                          <input type="text" name="username" class="form-control bg-transparent" id="exampleInputText1" aria-describedby="textHelp">
+                        </div>
+                        <div class="form-group" id="az">
+                          <label for="exampleInputPassword1">Password</label>
+                          <input type="password" name="password1" class="form-control bg-transparent" id="exampleInputPassword1">
+                        </div>
+                        <div class="form-group" id="az">
+                          <label for="exampleInputPassword1">Repeat Password</label>
+                          <input type="password" name="password2" class="form-control bg-transparent" id="exampleInputPassword1">
+                        </div>
+                        <button type="submit" class="btn btn-primary">SignUp</button>
+                    </form>
+                        <h6>Your paswsword can't be too similar to other personal information.</h6>
+                        <h6>Your password must contain at least 8 characters</h6>
+                        <h6>Your password can't be a commonly used password</h6>
+                        <h6>Your password must be entirely numeric</h6>
+                </div>
+            </div>
+        </div>
+    </div>     
+</div>
+{% endblock content %}
+    
+
+
+{% block footer %}  {% endblock footer %}
+    

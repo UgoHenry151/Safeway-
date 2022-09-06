@@ -1,0 +1,540 @@
+@media (max-width: 500px){
+    .work{
+        overflow: hidden;
+    }
+    .topbar{
+        margin-bottom: 1rem;
+        justify-content: center;
+    }
+    .carousel-caption{
+        margin-bottom: 7rem;
+    }
+    .tay{
+        justify-content: center;
+    }
+    .top{
+        justify-content: center;
+        padding-bottom: 1rem;
+    }
+    .dess{
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+    }
+    .navbar-brand{
+        margin-left: 0;
+    }
+    .carousel-inner img{
+        height: 60vh;
+    }
+    #single{
+        margin-top: 3rem;
+    }
+    .jerry{
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(1fr)) ;
+    }
+    .mic img{
+        width: 80%;
+        margin-left: -2.5rem;
+        margin-bottom: 2.5rem;
+    }
+    .mee{
+        margin-left: -1rem;
+        width: 90%;
+    }
+    .grid{
+        display: flex;
+        flex-direction: column;
+    }
+    .kam{
+        padding-bottom: 2rem;
+    }
+    .ser{
+        width: 80%;
+    }
+    .fish{
+        width: 100%;
+        margin-top: -2.5rem;
+        /* margin-left: -2.5rem; */
+    }
+    .neo img{
+        display: none;
+    }
+    .fid{
+        text-align: center;
+        margin-top: -3rem;
+    }
+    .nng{
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
+    #temi{
+        height: 96rem;
+    }
+    .sit{
+        width: 100%;
+        margin-top: 3rem;
+    }
+    #bda{
+       margin-left: 2.5rem;
+    }
+    .fre h4 h2{
+        font-size: smaller;
+    }
+    #bel{
+       display: flex;
+       flex-direction: column; 
+    }
+    .cip h3{
+        padding-left: 1rem;
+        /* padding-right: 0.5rem; */
+        font-size: 25px;
+        margin-top: -2rem;
+        margin-bottom: 2rem;
+    }
+    .joy{
+        display: block;
+    }
+    .joy h1{
+        font-size: 25px;
+        margin-bottom: 1rem;
+    }
+    .d-flex h5{
+        font-size: medium
+    }
+    .d-flex .btn:hover{
+        color: white;
+    }
+    #ves .card{
+        margin-left: 5rem;
+        width: 60%;
+    }
+    .mun{
+        font-size: 30px;
+        margin-bottom: 2rem;
+    }
+    .one{
+        margin-bottom: 3rem;
+    }
+    .two{
+        margin-bottom: 3rem;
+    }
+    .three{
+        margin-bottom: 3rem;
+    }
+    .aka{
+        width: 60vh;
+        margin-top: 10vh;
+    }
+    .small-prof{
+        height: 31rem;
+        width: 100%;
+        margin-left: 0.5rem;
+    }
+    .profile-col{
+        margin-left: 0rem;
+    }
+    .history{
+        margin-left: 1rem;
+    }
+    .report{
+        margin-left: 1rem;
+    }
+    .height{
+        margin-left: 1rem;
+    }
+    .mdo{
+        margin-left: 1rem;
+    }
+    .rounded-image{
+        margin-left: 2rem;
+    }
+    .notice{
+        margin-left: 12rem;
+    }
+    .prof-group{
+        margin-left: 9.7rem;
+    }
+    .edit-nav{
+        margin-left: 9rem;
+    }
+    /* cart styling */
+    .til{
+        width: 100%;
+        margin-left: 0rem;
+        margin-top: 1rem;
+    }
+    .cart-row{
+        display: grid;
+        grid-template-columns: repeat(1, 100%);
+    }
+    .card-foot h4{
+        font-size: 1rem;
+    }
+    .cart-card{
+        margin-left: -1rem;
+        width: 25rem;
+    }
+    .card-d{
+        display: grid;
+    }
+    .cart-summary{
+        margin-top: 3rem;
+        width: 25rem;
+    }
+    .cv{
+        margin-left: auto;
+    }
+    /* pricing styling */
+    .pricing-box{
+        display: grid;
+        grid-template-columns: repeat(1, 50%);
+        row-gap: 3rem;
+        margin-left: 1.5rem;
+    }
+    .box1{
+        background: transparent;
+        width: 20rem;
+        height: 33rem;
+        position: relative;
+        border: 2px solid #17A2B8;
+        transition: all 0.75s ease;
+    }
+
+    /* profile */
+    .small-prof{
+      height: 31rem;
+      width: 100%;
+      margin-left: 0.5rem;
+    }
+    .profile-col{
+      margin-left: 0rem;
+    }
+    .history{
+      margin-left: 1rem;
+    }
+    .report{
+      margin-left: 1rem;
+    }
+    .height{
+      margin-left: 1rem;
+    }
+    .mdo{
+      margin-left: 1rem;
+    }
+    .rounded-image{
+      margin-left: 2rem;
+    }
+    .notice{
+      margin-left: 12rem;
+    }
+    .prof-group{
+      margin-left: 9.7rem;
+    }
+
+    /* profedit */
+    .edit-nav{
+      margin-left: 9rem;
+    }
+
+    /* history */
+    .anodi{
+      display: none;
+    }
+    .card-subtitle{
+      display: block;
+    }
+    .his-img{
+      margin-top: 1rem;
+    }
+    .cuul{
+      padding-top: 3rem;
+    }
+} 
+@media (max-width:800px ) and (min-width: 501px ){
+    .work{
+        overflow: hidden;
+    }
+    .topbar{
+        margin-bottom: 1rem;
+        justify-content: center;
+    }
+    .carousel-caption{
+        margin-bottom: 7rem;
+    }
+    .tay{
+        justify-content: center;
+        margin-left: -2rem;
+        gap: 2rem;
+    }
+    .top{
+        justify-content: center;
+        padding-bottom: 1rem;
+        left: 3rem;
+    }
+    .dess{
+        display: flex;
+        gap: 1rem;
+        /* justify-content: end; */
+    }
+    .dess button{
+        padding-inline: 2rem;
+    }
+    .navbar-brand{
+        margin-left: 0;
+    }
+    .carousel-inner img{
+        height: 60vh;
+    }
+    #single{
+        margin-top: 3rem;
+    }
+    .jerry{
+        display: flex;
+        flex-direction: row;
+    }
+    .mic img{
+        width: 100%;
+        /* margin-left: -2.5rem; */
+        /* margin-bottom: 2.5rem; */
+    }
+    .mee{
+        margin-left: -1rem;
+        width: 90%;
+    }
+    .grid{
+        display: flex;
+        flex-direction: column;
+    }
+    .kam{
+        padding-bottom: 2rem;
+    }
+    .ser{
+        width: 80%;
+    }
+    .fish{
+        width: 100%;
+        margin-top: -2.5rem;
+        /* margin-left: -2.5rem; */
+    }
+    .neo img{
+        display: none;
+    }
+    .fid{
+        text-align: center;
+        margin-top: -3rem;
+    }
+    .nng{
+        margin-top: 10rem;
+        margin-bottom: 6rem;
+    }
+    #temi{
+        height: 96rem;
+    }
+    .sit{
+        width: 100%;
+        margin-top: 3rem;
+    }
+    #bda{
+       margin-left: 2.5rem;
+    }
+    .fre h4 h2{
+        font-size: smaller;
+    }
+    #bel{
+       display: flex;
+       flex-direction: column; 
+    }
+    .cip h3{
+        padding-left: 1rem;
+        /* padding-right: 0.5rem; */
+        font-size: 25px;
+        margin-top: -2rem;
+        margin-bottom: 2rem;
+    }
+    .joy{
+        display: block;
+    }
+    .joy h1{
+        font-size: 25px;
+        margin-bottom: 1rem;
+    }
+    .d-flex h5{
+        font-size: medium
+    }
+    .d-flex .btn:hover{
+        color: white;
+    }
+    #ves .card{
+        margin-left: 5rem;
+        width: 60%;
+    }
+    .mun{
+        font-size: 30px;
+        margin-bottom: 2rem;
+    }
+    .one{
+        margin-bottom: 3rem;
+    }
+    .two{
+        margin-bottom: 3rem;
+    }
+    .three{
+        margin-bottom: 3rem;
+    }
+    .aka{
+        width: 60vh;
+        margin-top: 10vh;
+    }
+    .small-prof{
+        height: 31rem;
+        width: 100%;
+        margin-left: 0.5rem;
+    }
+    .profile-col{
+        margin-left: 0rem;
+    }
+    .history{
+        margin-left: 1rem;
+    }
+    .report{
+        margin-left: 1rem;
+    }
+    .height{
+        margin-left: 1rem;
+    }
+    .mdo{
+        margin-left: 1rem;
+    }
+    .rounded-image{
+        margin-left: 2rem;
+    }
+    .notice{
+        margin-left: 12rem;
+    }
+    .prof-group{
+        margin-left: 9.7rem;
+    }
+    .edit-nav{
+        margin-left: 9rem;
+    }
+    /* profile edit */
+    .notice{
+        margin-left: 2rem;
+    }
+    .profdit{
+        font-size: smaller;
+    }
+    .link-edit{
+        font-size: 1.2rem;
+    }
+    .link-editt{
+        font-size: 1rem;
+        margin-top: 10rem;
+    }
+    .edit-nav{
+        margin-left: 9rem;
+    }
+
+    /* cart styling */
+    .cart-row{
+        display: grid;
+        grid-template-columns: repeat(1, 100%);
+    }
+    .cart-card{
+        width: 46rem;
+    }
+    .cart-summary{
+        margin-top: 3rem;
+        width: 47rem;
+    }
+    .cv{
+        margin-left: auto;
+    }
+
+    /* pricing styling */
+    .pricing-box{
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        row-gap: 3rem;
+        margin-left: 1.5rem;
+    }
+    .box1{
+        background: transparent;
+        width: 20rem;
+        height: 33rem;
+        position: relative;
+        border: 2px solid #17A2B8;
+        transition: all 0.75s ease;
+    }
+
+    /* profile */
+    .profile-col{
+        margin-left: -1rem;
+    }
+
+    /* history */
+    .anodi, .card-subtitle{
+        display: none;
+    }
+}
+
+@media only screen and (max-device-width: 1024px){
+          /* contact styling */
+    .map{
+        width: 1rem;
+    }
+
+    /* cart */
+    .qy{
+        font-size: 1rem;
+    }
+
+    /* pricing styling */
+    .pricing-box{
+        display: grid;
+        grid-template-columns: repeat(4, 26%);
+        margin-left: -0.7rem;
+    }
+    .box1{
+        background: transparent;
+        width: 15rem;
+        height: 33rem;
+        position: relative;
+        border: 2px solid #17A2B8;
+        transition: all 0.75s ease;
+    }
+
+    /* profile */
+    .small-prof{
+        height: 31rem;
+        width: 14.5rem;
+        margin-left: -0.6rem;
+    }
+
+    /* prescription */
+    .pris-content{
+        font-size: 1.1rem;
+        font-weight: bolder;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

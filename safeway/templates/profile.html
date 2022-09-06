@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+
+{% block title %} | Patient Profile{% endblock title %}
+
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+    
+
+{% block banner %}
+    
+{% endblock banner %}
+    
+
+{% block content %}
+<div class="container-flui">
+    <div class="row justify-content-start">
+        <div class="col-12 col-md-3">
+            <nav class="navbar navbar-expand-sm navbar-light bg-transparent nav-edit">
+                <a class="navbar-toggler border-0" type="button" data-toggle="collapse" href="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <span class="navbar-toggler-icon bg-primary rounded" style="font-size: 1rem;"></span>
+                    <!-- <span><strong>SideBar</strong></span> -->
+                </a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="display: inline-block;">
+                        <a class="nav-link mb-3 link-edit" href="{% url 'dashboard' %}"><i class="fas fa-files"></i>Dashboard <i class="fas fa-files text-primary"></i></a>
+                        <a class="nav-link mb-3 profdit" href="{% url 'proedit' %}">Update</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'cart' %}">Cart</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'pharmacy' %}">Shop</a>
+                        <a class="nav-link profditt mb-3 active" href="#item-1"> Profile </a>
+                        <a class="nav-link mb-3 profdit" href="{% url 'recovery' %}">Change Password</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'newappoint' %}">Appointment</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'prescription' %}">Prescription</a>
+                        <a class="nav-link text-muted link-editt" href="#"><small>Help And Support</small></a>
+                        <a class="nav-link text-muted link-edite" href="#">Preferences</a>
+                    </ul>
+                </div>
+            </nav>
+            
+            {% comment %}
+                <nav id="navbar-example3" class="navbar navbar-light bg-transparent w-75 nav-edit">
+                <a class="navbar-brand mb-5 pb-5 mt-4 text-primary" href="{% url 'index' %}"><h2><strong> M<span class="log text-danger">E</span>D<span class="log text-danger">I</span>C<span class="log text-danger">A</span>L</strong></h2></a>
+                <nav class="nav nav-pills" style="display: block;">
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'dashboard' %}"><i class="fas fa-files"></i>Dashboard <i class="fas fa-files text-primary"></i></a>
+                    <a class="nav-link text-primary mb-3 profdit" href="{% url 'proedit' %}">Edit Profile</a>
+                    <!-- <nav class="nav nav-pills flex-column">
+                        <a class="nav-link text-primary mb-3 link-edit ml-3 my-1" href="#item-1-1">Item 1-1</a>
+                        <a class="nav-link text-primary mb-3 link-edit ml-3 my-1" href="#item-1-2">Item 1-2</a>
+                    </nav> -->
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'cart' %}">Cart</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'pharmacy' %}">Shop</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'index' %}">Doctors</a>
+                    <a class="nav-link text-primary profdit mb-3" href="#item-1"> View Profile </a>
+                    <a class="nav-link text-primary mb-3 profdit" href="{% url 'recovery' %}">Change Password</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'index' %}">Appointment</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'prescription' %}">Prescription</a>
+                    <!-- <nav class="nav nav-pills flex-column">
+                        <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a>
+                        <a class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
+                    </nav> -->
+                    <a class="nav-link text-muted link-editt" href="#"><small>Help And Support</small></a>
+                    <a class="nav-link text-muted link-edit" href="#">Preferences</a>
+                </nav>
+                </nav>
+            {% endcomment %}   
+        </div>
+        <div class="col-12 col-md-9 profile-col">
+            <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+                <p id="item-1">
+                    <div class="patient-edit">
+                        <div class="container-flui">
+                            <div class="row">
+                                <!-- <div class="col-md-3 align-self-right">
+                                    <img src="" class="image-fluid pt-5 mt-5" alt="click to upload your image here" height="100" width="100">
+                                </div> -->
+                                <div class="col-12 bg-light">
+                                    <h4 class="pient anak pt-5">Patient Profile</h4>
+                                    <hr>
+                                    <br><br>
+                                    <div class="row justify-content-between mb-5 pb-5 mr-1">
+                                        <div class="img-form col-md-4">
+                                            <img src="{{profile.image.url}}" class="rounded-image mt-1" alt="click to upload your image here" height="250" width="370">
+                                            <br><br><br><br>
+                                            <form action="#" class="pt-4 bg-white small-prof">
+                                                <h5 class="ml-3 anak">ABOUT PATIENT</h5>
+
+                                                <div class="form-group ml-3 pt-4">
+                                                    <label for="inputName"><h6><strong>Full Name</strong></h6></label>
+                                                    <p>{{profile.marital_status}} {{profile.fullname|title}}</p>
+                                                </div>
+                                                
+                                                <div class="form-group ml-3">
+                                                    <label for="inputName"><h6><strong>Date of Birth</strong></h6></label>
+                                                    <p>{{profile.date_of_birth}}</p>
+                                                </div>
+                                                <div class="form-group ml-3">
+                                                    <label for="inputEmail"><h6><strong>Email ID</strong></h6></label>
+                                                    <p>{{profile.email}}</p>
+                                                </div>
+                                                <div class="form-group ml-3">
+                                                    <label for="inputNumber"><h6><strong>Phone Number</strong></h6></label>
+                                                    <p>{{profile.phone_number}}</p>
+                                                </div>
+                                                <hr>
+                                                <div class="form-group ml-3">
+                                                    <label for="inputAddress"><h6><strong>Address</strong></h6></label>
+                                                    <p>{{profile.address}}</p>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        &nbsp;
+                                        <!-- used bootsrap's scrollspy here -->
+                                        <div class="bio-general col-12 col-md-7 bg-white">
+                                            <nav id="navbar-example2" class="navbar navbar-light bg-transparent bio">
+                                                <ul class="nav nav-pill">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link head-stuff" href="#fat"><strong>Biography</strong></a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link head-stuff" href="#mdo"><strong>Timeline</strong></a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                            <div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
+                                                <p id="fat">
+                                                    <div class="history mb-5">
+                                                        <p>{{profile.history}}</p>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="report">
+                                                        <h3 class="anak">General Report</h3>
+                                                        <small>Blood Pressure</small>
+                                                        <div class="progress" style="height: 6px;">
+                                                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div><br>
+                                                        <small>Heart Beat</small>
+                                                        <div class="progress" style="height: 6px;">
+                                                            <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div><br>
+                                                        <small>Haemoglobin</small>
+                                                        <div class="progress" style="height: 6px;">
+                                                            <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div><br>
+                                                        <small>Sugar</small>
+                                                        <div class="progress" style="height: 6px;">
+                                                            <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="height">
+                                                        <h3 class="anak">Normal Details</h3>
+                                                        <form action="">
+                                                            <br>
+                                                            <div class="form-group">
+                                                                <label for="inputName">Patient Weight</label>
+                                                                <p>{{profile.patient_weight}}</p>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="inputName">Patient Height</label>
+                                                                <p>{{profile.patient_height}}</p>
+                                                            </div>
+
+                                                        </form>
+                                                    </div>
+                                                </p>
+
+                                                <p id="mdo" class="mdo">
+                                                    <i class="far fa-circle"></i>
+                                                    <hr>
+                                                    <p>This shows time your presence was received and time you were discharged <br>
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur 
+                                                        accusantium ipsa sapiente necessitatibus dolores veritatis saepe quas? 
+                                                        Facilis, dolore facere!
+                                                    </p>
+                                                </p>
+                                               
+                                            </div>                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    
+
+
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}
+    

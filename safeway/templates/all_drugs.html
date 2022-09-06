@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+
+{% block title %} | all_drugs {% endblock title %}
+
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+    
+
+{% block banner %}
+    
+{% endblock banner %}
+    
+
+
+{% block content %}
+
+<div class="details-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="shop-prod">
+                    <p><a href="{% url 'pharmacy'  %}" class="text-decoration-none text-muted"><i class=" fas fa-arrow-left"></i> Pharmacy</a></p>
+                    <div class="container-fluid text-center text-white">
+                                        
+                        {% if shop %}
+                            <h4 class="prod"><strong>Available Drugs{{shop.product| title}}</strong></h4>                                
+                        {% endif %}
+                        <!-- style="background: #E3E3EF;" -->
+                        <div class="row container-fluid">                                                        
+                            {% if shop %}
+                                {% for item in shop %}
+                                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 w-100 h-100 pb-5 ">
+                                        <div class="card w-100 border-0">
+                                            <div class="all-overlay">
+                                                <div class="parent-overlay">
+                                                    <img src="{{item.image.url}}" class="card-img-top" alt="..." height="200" width="290">
+                                                </div>
+                                                <div class="img-overlay">
+                                                    <div class="font-img">
+                                                        <a href="{% url 'index'  %}" class="btn btn-white border-1 ml-1" style="max-width: 2.3rem;"><i class="fas fa-cart-shopping mr-5 anas"></i></a>
+                                                    </div>
+                                                    <div class="font-rating">
+                                                        <small><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star-half-stroke anas"></i></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-text"><small><a href="" class="anak text-decoration-none">{{item.drug_type|title}}</a></small></p>
+                                                <h5 class="card-title "><a href="{% url 'details' item.id item.slug  %}" class="anak font-weight-bolder text-decoration-none">{{item.product|title}}</a></h5>
+                                                <!-- <p class="card-text text-left">{{item.details}}</p> -->
+                                                <p class="card-text anak"><strong>£{{item.price}}</strong></p>
+                                                {% comment %}
+                                                
+                                                {% endcomment %}
+                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                {% endfor %}                                
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination pt-5 mt-5 justify-content-center">
+                        
+                        {% if shop.has_previous %}          
+                            <li class="page-item"><a class="page-link mi" href="?page={{shop.previous.page_number}}">Previous</a></li>
+                        {% endif %}
+
+                        {% for item in shop.paginator.page_range %}    
+                            {% if shop.number == item %}
+                                <li class="page-item"><a class="page-link im" href="?page={{item}}">{{item}}</a></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link im" href="?page={{item}}">{{item}}</a></li> 
+                            {% endif %}                  
+                        {% endfor %}
+                        
+                        {% if shop.has_next %} 
+                            <li class="page-item"><a class="page-link mi" href="?page={{shop.next.page_number}}">Next</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="container">
+                    <div class="recent">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#exampleModalScrollable1">
+                            <i class="fas fa-magnifying-glass anak"></i>
+                        </button>
+    
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div class="seach-bar">
+                                            <!-- seach bar code -->
+                                            <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'searched' %}">
+                                                {% csrf_token %}
+                                                <input class="form-control w-75" name="itemsearch" type="search" placeholder="Search" aria-label="Search">
+                                                <button class="btn mi" type="submit">Search</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn mi" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h4><strong>RECENT <span class="anak">POSTS</span></strong></h4>
+                        <small>Provide Comprehensive</small>
+                        <hr>
+                        <div class=" d-flex mb-3">
+                            <img src="{% static '' %}image/bg_2.jpg" class="image-fluid" height="80" width="80">
+                            <div class="til ml-3">
+                                <small class="card-text anak">September 12, 2017</small> <br>
+                                <span class="card-title"><a href="#" class="dir prod text-decoration-none" style="font-size: small;"><strong>Role of Genetics in Treating Low-grade Glioma</strong></a></span>
+                            </div>
+                        </div>
+                        <div class=" d-flex mb-3">
+                            <img src="{% static '' %}image/bg_2.jpg" class="image-fluid" height="80" width="80">
+                            <div class="til ml-3">
+                                <small class="card-text anak">September 12, 2017</small><br>
+                                <span class="card-title"><a href="#" class="dir prod text-decoration-none" style="font-size: small;"><strong>Role of Genetics in Treating Low-grade Glioma</strong></a></span>
+                            </div>
+                        </div>
+                        <div class=" d-flex mb-3">
+                            <img src="{% static '' %}image/bg_2.jpg" class="image-fluid" height="80" width="80">
+                            <div class="til ml-3">
+                                <small class="card-text anak">September 12, 2017</small><br>
+                                <span class="card-title"><a href="#" class="dir prod text-decoration-none" style="font-size: small;"><strong>Role of Genetics in Treating Low-grade Glioma</strong></a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+    
+
+
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}
+    

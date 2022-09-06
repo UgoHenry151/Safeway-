@@ -1,0 +1,428 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+{% load static %}
+{% load humanize %}
+
+
+<!-- title section -->
+{% block title %} | Dashboard{% endblock title %}
+
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+
+
+
+{% block banner %}
+
+{% endblock banner %}
+
+<!--content -->
+{% block content %}
+<div class="homed">
+    <a class="navbar-brand anak" href="{% url 'index' %}"><h2><strong> M<span class="log text-danger">E</span>D<span class="log text-danger">I</span>C<span class="log text-danger">A</span>L</strong></h2></a> 
+</div>
+<div class="container-flui">
+    <div class="row justify-content-start">
+        <div class="col-12 col-md-3">
+            <nav class="navbar navbar-expand-sm navbar-light bg-transparent nav-edit">
+                <a class="navbar-toggler border-0" type="button" data-toggle="collapse" href="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <span class="navbar-toggler-icon bg-primary rounded" style="font-size: 1rem;"></span>
+                    <!-- <span><strong>SideBar</strong></span> -->
+                </a>
+                <a class="navbar-brand mb-5 pb-5 mt-4 anak" id="home" href="{% url 'index' %}"><h2><strong> M<span class="log text-danger">E</span>D<span class="log text-danger">I</span>C<span class="log text-danger">A</span>L</strong></h2></a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="display: inline-block;">
+                        <a class="nav-link mb-3 link-edited" href="#item-1">Dashboard</a>
+                        <a class="nav-link mb-3 profdit" href="{% url 'proedit' %}">Update</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'cart' %}">Cart</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'pharmacy' %}">Shop</a>
+                        <a class="nav-link mb-3 profdit" href="{% url 'profile' %}"> Profile </a>
+                        <a class="nav-link mb-3 profdit" href="{% url 'recovery' %}">Change Password</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'newappoint' %}">Appointment</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'prescription' %}">Prescription</a>
+                        <a class="nav-link text-muted link-editt" href="#"><small>Help And Support</small></a>
+                        <a class="nav-link text-muted link-edite" href="#">Preferences</a>
+                    </ul>
+                </div>
+            </nav>            
+            {% comment %}
+                <nav id="navbar-example3" class="navbar navbar-light bg-transparent w-75 nav-edit">
+                <a class="navbar-brand mb-5 pb-5 mt-4 text-primary" href="{% url 'index' %}"><h2><strong> M<span class="log text-danger">E</span>D<span class="log text-danger">I</span>C<span class="log text-danger">A</span>L</strong></h2></a>
+                <nav class="nav" style="display: block;">
+                    <a class="nav-link link-edit" href="#item-1">Dashboard</a>
+                    <a class="nav-link text-primary mb-3 profdit" href="{% url 'proedit' %}">Edit Profile</a>
+                    <!-- <nav class="nav nav-pills flex-column">
+                        <a class="nav-link text-primary mb-3 link-edit ml-3 my-1" href="#item-1-1">Item 1-1</a>
+                        <a class="nav-link text-primary mb-3 link-edit ml-3 my-1" href="#item-1-2">Item 1-2</a>
+                    </nav> -->
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'cart' %}">Cart</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'pharmacy' %}">Shop</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="#">Doctors</a>
+                    <a class="nav-link text-primary profdit mb-3" href="{% url 'profile' %}"> View Profile </a>
+                    <a class="nav-link text-primary mb-3 profdit" href="{% url 'recovery' %}">Change Password</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'index' %}">Appointment</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'prescription' %}">Prescription</a>
+                    <!-- <nav class="nav nav-pills flex-column">
+                        <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a>
+                        <a class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
+                    </nav> -->
+                    <a class="nav-link text-muted link-editt" href="#"><small>Help And Support</small></a>
+                    <a class="nav-link text-muted link-edit" href="#">Preferences</a>
+                </nav>
+                </nav>   
+            {% endcomment %}                         
+        </div>
+        <div class="col-12 col-md-9 profile-col">
+            <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+                <p id="item-1">
+                    <div class="patient-edit">
+                        <div class="container-flui">
+                            <div class="">
+                                <div class="col-12 bg-light table-responsive pb-5">
+                                    <div class="container pt-4">
+                                        <div class="row">
+                                            <div class="col-sm-8 his-back">
+                                                <div class="his-name row" data-aos="fade-right" data-aos-duration="3000">
+                                                    <div class="col-sm-8 align-self-center text-white text-center" data-aos="zoom-in" data-aos-duration="3000">
+                                                        <p><strong>Welcome Back</strong> {{profile.fullname|title}}</p>
+                                                        {% if general %}
+                                                            {% for items in general %}
+                                                                <span>{{items.write_ups}}</span>
+                                                            {% endfor %}
+                                                        {% else %}
+                                                            <span>Your Current Histories here</span>
+                                                    
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-sm-4 anodi">
+                                                    </div>
+                                                </div>              
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="card his-img w-100" data-aos="fade-right" data-aos-duration="3000">
+                                                    <div class="card-body">
+                                                        <img src="{{profile.image.url}}" class="rounded-circle mt-1" alt="click to upload your image here" height="70" width="70">
+                                                        <h5 class="card-title pt-3" data-aos="fade-right" data-aos-duration="3000"><span>{{profile.marital_status}} {{profile.fullname|title}}</span></h5>
+                                                        <h6 class="card-subtitle mb-2 pt-2" data-aos="fade-right" data-aos-duration="2500">{{profile.email}}</h6>
+                                                        <h6 class="card-subtitle mb-2 pt-2" data-aos="fade-right" data-aos-duration="2000">{{profile.phone_number}}</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box-items">
+                                        <h3 class="prod pt-3 pb-3"><strong>General Information</strong></h3>
+                                        <hr>
+                                        <div class="semi-boxes">
+                                            <div class="boxes1 text-center w-100  pt-3 pb-3" data-aos="fade-down" data-aos-duration="3000">
+                                                <img src="{% static '' %}image/pt-dashboard-01.png" alt="" class="pt-2"><br>
+                                                <p><strong>Heart Rate</strong></p>                                               
+                                                {% if general %}
+                                                    {% for items in general %}
+                                                        <span class="">{{items.heart}}bpm</span>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <span>0 bpm</span>                                                 
+                                                {% endif %}
+                                            </div>
+                                            <div class="boxes text-center w-100  pt-2" data-aos="fade-down" data-aos-duration="2500">
+                                                <img src="{% static '' %}image/pt-dashboard-02.png" alt="" class="pt-2"><br>
+                                                <p><strong>Body Temperature</strong></p>
+                                                {% if general %}
+                                                    {% for items in general %}
+                                                        <span class="">{{items.body}}c</span>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <span>0 c</span>                                           
+                                                {% endif %}                                          
+                                            </div>
+                                            <div class="boxes1 text-center w-100  pt-2" data-aos="fade-down" data-aos-duration="2000">
+                                                <img src="{% static '' %}image/pt-dashboard-03.png" alt="" class="pt-2"><br>
+                                                <p><strong>Glucose Level</strong></p>
+                                                {% if general %}
+                                                    {% for items in general %}
+                                                        <span class="">{{items.glucose}}</span>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <span>0 - 0</span>                                           
+                                                {% endif %}
+                                            </div>
+                                            <div class="boxes text-center w-100  pt-2" data-aos="fade-down" data-aos-duration="1500">
+                                                <img src="{% static '' %}image/pt-dashboard-04.png" alt="" class="pt-2"><br>
+                                                <p><strong>Blood Pressure</strong></p>
+                                                {% if general %}
+                                                    {% for items in general %}
+                                                        <span class="">{{items.blood}} mg/dl</span>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <span>0 mg/dl</span>                                      
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex pt-5">
+                                        <div class="accordion mx-aut0" id="accordionExample">
+                                            <p class="lets">
+                                                <span><a class="text-decoration-none bg-transparent his-grp" data-toggle="collapse"href="#multiCollapseExample1" role="button" aria-expanded="true" aria-controls="multiCollapseExample1"><strong>Appointment</strong></a></span>
+
+                                                <span><a class="text-decoration-none bg-transparent his-grp" data-toggle="collapse"href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample2"><strong>Prescription</strong></a></span>
+
+                                                <span><a class="text-decoration-none bg-transparent his-grp" data-toggle="collapse"href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample3"><strong>Medical Records</strong></a></span>
+
+                                                <span><a class="text-decoration-none bg-transparent his-grp" data-toggle="collapse"href="#multiCollapseExample4" role="button" aria-expanded="false" aria-controls="multiCollapseExample4"><strong>Billing</strong></a></span>
+                                            </p>
+                                            <div class="" data-aos="fade-down" data-aos-duration="3000">
+                                                <div class="">
+                                                    <div class="collapse show " id="multiCollapseExample1" data-parent="#accordionExample">
+                                                        <div class="card card-body bg-transparent" style="width: 70rem">
+                                                            <hr>
+                                                            
+                                                            <table class="table table-sm-responsive w-100">
+                                                                <thead class="tabhead">
+                                                                    <tr>
+                                                                        <th scope="col" class="pris-table">services</th>
+                                                                        <th scope="col" class="pris-table ml-2">Booking Date</th>
+                                                                        <th scope="col" class="pris-table ml-2">Amount</th>
+                                                                        <th scope="col" class="pris-table ml-2">Appt Date</th>
+                                                                        <th scope="col" class="pris-table ml-2">Follow Up</th>
+                                                                        <th scope="col" class="pris-table ml-2">Status</th>
+                                                                        <th scope="col" class="pris-table ml-2">Actions</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    
+                                                                    {% if appointy %}
+                                                                        {% for items in appointy %}
+                                                                            <tr>
+                                                                                <th scope="col" class="pris-content">
+                                                                                    <small class="doc anak">{{items.services}}</small>
+                                                                                </th>
+                                                                                <th scope="row" class="pris-content"><small>{{items.apptdate}}</small></th>
+                                                                                <th scope="col" class="pris-content"><small>${{items.price}}</small></th>
+                                                                                <th scope="col" class="pris-content"><small>{{items.appt_time}}</small></th>
+                                                                                <th scope="col" class="pris-content"><small>{{items.follow_up}}</small></th>
+                                                                                <th scope="col" class="pris-content">
+                                                                                    <h4><span class="badge badge-transparent text-danger" style="border: 1px solid red;">{{items.status}}</span></h4>
+                                                                                </th>
+                                                                                <th scope="col" class="pris-content"><small>
+                                                                                    <a href=""><i class="fas fa-eye anak"></i></a>
+                                                                                    <a href=""><i class="fas fa-print ml-2 anak"></i></a>
+                                                                                    <!-- <form action="{% url 'remove_prescription' %}" method="POST">
+                                                                                    {% csrf_token %}
+                                                                                        <input type="hidden" name="deleteprescrip" value="{{items.id}}">
+                                                                                        <button type="submit" class=" border-0 bg-transparent text-primary"><i class=" fas fa-trash"></i></button>
+                                                                                    </form> -->
+                                                                                </small></th>
+                                                                            </tr>                                                  
+                                                                        {% endfor %}
+                                                                    {% else %}
+                                                                        <span class="text-center">Your appointment history will be displayed here</span>
+                                                                        
+                                                                    {% endif %}
+                                                                        
+                                                                </tbody>
+                                                            </table>                                                                
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="">
+                                                    <div class="collapse" id="multiCollapseExample2" data-parent="#accordionExample">
+                                                        <div class="card card-body bg-transparent" style="width: 70rem">
+                                                            <hr>
+                                                            
+                                                            <table class="table w-100 table-sm-responsive">
+                                                                <thead class="tabhead">
+                                                                    <tr>
+                                                                        <th scope="col" class="pris-table">#/ID</th>
+                                                                        <th scope="col" class="pris-table ml-2">Title</th>
+                                                                        <th scope="col" class="pris-table ml-2">Created by</th>
+                                                                        <th scope="col" class="pris-table ml-2">Date</th>
+                                                                        <th scope="col" class="pris-table ml-2">Diseases</th>
+                                                                        <th scope="col" class="pris-table ml-2">Content</th>
+                                                                        <th scope="col" class="pris-table ml-2">Actions</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    {% if prescripy %}
+                                                                    {% for items in prescripy %}
+                                                                        <tr>
+                                                                            <th scope="row" class="pris-content" style="font-size: 1rem;"><small>{{items.prescrip_code}}</small></th>
+                                                                            <th scope="col" class="pris-content" style="font-size: 1rem;"><small>{{items.title}}</small></th>
+                                                                            <th scope="col" class="pris-content">
+                                                                                <img src="{{items.image.url}}" class="ml-3" height="30" width="30"><br>
+                                                                                <small class="doc text-primary" style="font-size: 1rem;">{{items.name_of_doc}}</small>
+                                                                            </th>
+                                                                            <th scope="col" class="pris-content" style="font-size: 1rem;"><small>{{items.created}}</small></th>
+                                                                            <th scope="col" class="pris-content">
+                                                                                <h4><span class="badge badge-transparent text-danger" style="border: 1px solid red;font-size: 1rem;">{{items.disease}}</span></h4>
+                                                                            </th>
+                                                                            <th scope="col" class="pris-content" style="font-size: 1rem;"><small>{{items.content}}</small></th>
+                                                                            <th scope="col" class="pris-content d-flex" style="font-size: 1rem;"><small>
+                                                                                <button type="submit" class="border-0 bg-transparent anak"><i class="fas fa-eye"></i></button>
+                                                                                <button type="submit" class="border-0 bg-transparent anak"><i class="fas fa-print ml-2"></i></button>
+                                                                                <!-- <form action="{% url 'remove_prescription' %}" method="POST">
+                                                                                {% csrf_token %}
+                                                                                    <input type="hidden" name="deleteprescrip" value="{{items.id}}">
+                                                                                    <button type="submit" class=" border-0 bg-transparent text-primary"><i class=" fas fa-trash"></i></button>
+                                                                                </form> -->
+                                                                                <!-- <a href=""><i class=" fas fa-trash ml-2"></i></a> -->
+                                                                            </small></th>
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                {% else %}
+                                                                    <span class="text-center">Your Prescription history will be displayed here</span>
+                                                                {% endif %}
+                                                                </tbody>
+                                                            </table> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="">
+                                                    <div class="collapse" id="multiCollapseExample3" data-parent="#accordionExample">
+                                                        <div class="card card-body bg-transparent" style="width: 70rem">
+                                                            <hr>
+                                                            
+                                                            <table class="table w-100 table-sm-responsive">
+                                                                <thead class="tabhead">
+                                                                    <tr>
+                                                                        <th scope="col" class="pris-table">#/ID</th>
+                                                                        <th scope="col" class="pris-table ml-2">Date</th>
+                                                                        <th scope="col" class="pris-table ml-2">Description</th>
+                                                                        <th scope="col" class="pris-table ml-2">Attachment</th>
+                                                                        <th scope="col" class="pris-table ml-2">Created</th>
+                                                                        <th colspan="2" class="pris-table ml-5">Actions</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    
+                                                                    {% if medical %}
+                                                                        {% for item in medical %}
+                                                                            <tr>
+                                                                                <th scope="row" class="pris-content"><small>{{item.code}}</small></th>
+        
+                                                                                <th scope="col" class="pris-content"><small>{{item.date}}</small></th>
+        
+                                                                                <th scope="col" class="pris-content"><small>{{item.description}}</small></th>
+        
+                                                                                <th scope="col" class="pris-content"><small>{{item.attachment}}</small></th>
+        
+                                                                                <th scope="col" class="pris-content">
+                                                                                    <img src="{{item.image.url}}" class="rounded-circle ml-3" height="30" width="30"><br>
+                                                                                    <small class="doc text-primary">{{item.doctor_name}}</small>
+                                                                                </th>
+        
+                                                                                <th colspan="2" class="pris-content ml-auto"><small>
+                                                                                    <a href=""><i class="fas fa-eye anak"></i></a>
+                                                                                    <a href=""><i class="fas fa-print ml-2 anak"></i></a>
+                                                                                    <!-- <form action="{% url 'remove_prescription' %}" method="POST">
+                                                                                    {% csrf_token %}
+                                                                                        <input type="hidden" name="deleteprescrip" value="{{items.id}}">
+                                                                                        <button type="submit" class=" border-0 bg-transparent text-primary"><i class=" fas fa-trash"></i></button>
+                                                                                    </form> -->
+                                                                                </small></th>
+                                                                            </tr>                                                                
+                                                                          
+                                                                        {% endfor %}
+                                                                    {% else %}
+                                                                        <span class="text-center">Your Medical Records will be displayed here</span>
+                                                                    {% endif %}
+                                                                        
+                                                                </tbody>
+                                                            </table> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class=""> 
+                                                    <div class="collapse" id="multiCollapseExample4" data-parent="#accordionExample">
+                                                        <div class="card card-body bg-transparent" style="width: 70rem">
+                                                            <hr>
+                                                            
+                                                            <table class="table w-100 table-sm-responsive">
+                                                                <thead class="tabhead">
+                                                                    <tr>
+                                                                        <th scope="col" class="pris-table ml-4">Invoice No</th>
+                                                                        <th scope="col" colspan="2" class="pris-table ml-2">Item</th>
+                                                                        <th scope="col" class="pris-table ml-2">Amount</th>
+                                                                        <th scope="col" colspan="2" class="pris-table ml-2">Paid On	</th>
+                                                                        <th scope="col" class="pris-table ml-2">Actions</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    
+                                                                    {% if billings %}
+                                                                        {% for items in billings %}
+                                                                            <tr>
+                                                                                <th scope="row" class="pris-content ml-4"><small>#INV-{{items.ordr_no}}</small></th>
+                                                                                <th scope="col" colspan="2" class="pris-content">
+                                                                                    <small class="anak">{{items.things_bought}}</small>
+                                                                                </th>
+                                                                                <th scope="col" class="pris-content log"><small>${{items.total}}</small></th>
+                                                                                <th scope="col" colspan="2" class="pris-content"><small>{{items.paid_on}}</small></th>
+        
+                                                                                <th scope="col" class="pris-content"><small>
+                                                                                    <a href=""><i class="fas fa-eye anak"></i></a>
+                                                                                    <a href=""><i class="fas fa-print ml-2 anak"></i></a>
+                                                                                    <!-- <form action="{% url 'remove_prescription' %}" method="POST">
+                                                                                    {% csrf_token %}
+                                                                                        <input type="hidden" name="deleteprescrip" value="{{items.id}}">
+                                                                                        <button type="submit" class=" border-0 bg-transparent text-primary"><i class=" fas fa-trash"></i></button>
+                                                                                    </form> -->
+                                                                                </small></th>
+                                                                            </tr>                                                                   
+                                                                            <!-- #INV-0010 -->
+                                                                        {% endfor %}
+                                                                    {% endif %}
+                                                                    
+                                                                    {% if billing %}
+                                                                        {% for item in billing %}
+                                                                            <tr>
+                                                                                <th scope="row" class="pris-content ml-4"><small>#INV-{{item.ordr_no}}</small></th>
+                                                                                <th scope="col" colspan="2" class="pris-content">
+                                                                                    <small class="anak">{{item.things_bought}}</small>
+                                                                                </th>
+                                                                                <th scope="col" class="pris-content log"><small>${{item.price}}</small></th>
+                                                                                <th scope="col" colspan="2" class="pris-content"><small>{{item.paid_on}}</small></th>
+        
+                                                                                <th scope="col" class="pris-content"><small>
+                                                                                    <a href=""><i class="fas fa-eye anak"></i></a>
+                                                                                    <a href=""><i class="fas fa-print ml-2 anak"></i></a>
+                                                                                    <!-- <form action="{% url 'remove_prescription' %}" method="POST">
+                                                                                    {% csrf_token %}
+                                                                                        <input type="hidden" name="deleteprescrip" value="{{items.id}}">
+                                                                                        <button type="submit" class=" border-0 bg-transparent text-primary"><i class=" fas fa-trash"></i></button>
+                                                                                    </form> -->
+                                                                                </small></th>
+                                                                            </tr>                                                                   
+                                                                            <!-- #INV-0010 -->
+                                                                        {% endfor %}
+                                                                    {% else %}
+                                                                        <span class="text-center">Your Billing history will be displayed here</span>                                                           
+                                                                    {% endif %}
+                                                                        
+                                                                </tbody>
+                                                            </table> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+  
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

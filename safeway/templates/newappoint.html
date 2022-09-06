@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+
+
+{% load static %}
+{% load humanize %}
+
+
+<!-- title section -->
+{% block title %} | Book Appointment{% endblock title %}
+
+
+<!-- upper header section -->
+{% block header %} {% include "header.html" %} {% endblock header %}
+
+
+<!-- banner section -->
+{% block banner %}
+
+{% endblock banner %}
+
+<!--content -->
+{% block content %}
+  <!-- second content -->
+  <div class="bg-transparent h-100" id="about">
+    <div class="container-fluid">
+      <div class="container pb-5 mx-auto">
+        <div class="bg-white pb-3">
+          <form class="form w-100 mx-auto text-center"  action="{% url 'newappoint' %}"   method="POST">
+          {% csrf_token %}
+            <br> &nbsp;
+            <h2 class="prod">Free Consultation</h2>
+            <br> <br>
+            <div class="form-row" data-aos="zoom-out-down" data-aos-duration="1500">
+              <div class="form-group col-md-6">                                        
+                {{apptform.firstname}}
+              </div>
+              <div class="form-group col-md-6">
+                {{apptform.lastname}}
+              </div>
+            </div>
+            <div class="form-group" data-aos="zoom-out-down" data-aos-duration="1500">
+              {{apptform.services}}
+            </div>
+
+            <div class="form-row" data-aos="zoom-out-down" data-aos-duration="1500">
+              <div class="form-group col-md-6">                                        
+                {{apptform.phone_number}}
+              </div>
+              <div class="form-group col-md-6">
+                {{apptform.email}}
+              </div>
+            </div>
+            <div class="form-group" data-aos="zoom-out-down" data-aos-duration="1500">
+              {{apptform.apptdate}}
+            </div>
+            <div class="form-group" data-aos="zoom-out-down" data-aos-duration="1500">
+              {{apptform.appt_time}}
+            </div>
+            <div class="form-group" data-aos="zoom-out-down" data-aos-duration="1500">
+              {{apptform.symptoms}}
+            </div>
+            <div class="form-group" data-aos="zoom-out-down" data-aos-duration="1500">
+              <input type="hidden" name="price" value="10"> 
+            </div>
+            <div class="form-group" data-aos="zoom-out-down" data-aos-duration="1500">
+              <input type="hidden" name="follow_up"> 
+            </div>
+            <div class="text-center">                    
+              <h6><span class="text-muted b-0 shadow-0  text-center" data-aos="fade-left" data-aos-duration="1500">
+                A non-refundable fee of <span class="anak"> $ 10</span> will be paid
+              </span> </h6>                                        
+            </div>
+            <button type="submit" class="butin btn mi mt-3" data-aos="fade-up" data-aos-duration="1000">Appointment</button>                   
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+
+
+
+<!-- footer content -->
+{% block footer %} {% include "footer.html" %} {% endblock footer %}

@@ -1,0 +1,357 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% load humanize %}
+
+
+<!-- title section -->
+{% block title %} | Search{% endblock title %}
+
+
+<!-- upper header section -->
+{% block header %}
+  {% include "header.html" %}
+{% endblock header %}
+
+
+<!-- banner section -->
+{% block banner %}
+<div class="details-banner mb-5">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light container sml-nav">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="nav snd-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'department' %}">Department</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Medicalist Shop
+                    </a>
+                    <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'pharmacy' %}">Pharmacy</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'profile' %}">Your Account</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'cart' %}">Cart</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'index' %}">Blog</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pricing' %}">Pricing</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    About
+                    </a>
+                    <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'contact_us' %}">Contact Us</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'index' %}">About Us</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary" href="{% url 'index' %}">Appointment</a>
+                </li>
+                </ul>
+                <div class="signin text-white mt-2">
+                <p><strong><a href="{% url 'loggin' %}" class="signin text-dark">Sign In||</a><a href="{% url 'signup' %}" class="signin text-dark">Sign Up</a></strong></p>
+                <p></p>
+                </div>
+            </div>
+        </nav>
+        <div class="text text-center">
+            <p class="text text-white mt-3">WHAT WE ACTUALLY DO?</p>
+            <h1 class="shop-text"><strong>Medical Product</strong></h1>
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock banner %}
+
+<!-- content section -->
+{% block content %}
+<br> <br>
+<div class="details-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="shop-prod">
+                    <p><a href="{% url 'pharmacy'  %}" class="text-decoration-none text-muted"><i class=" fas fa-arrow-left"></i> Pharmacy</a></p>
+                    <div class="container-fluid text-center text-white">
+                                        
+                        {% if shop %}
+                            <h4 class="prod text-muted"><strong>Available Drugs{{shop.product|title}}</strong></h4>                                
+                        {% endif %}
+                        <!-- style="background: #E3E3EF;" -->
+                        <div class="row container-fluid">                                                        
+                            {% if searched_drugs %}
+                                {% for item in searched_drugs %}
+                                    <div class="col-12 col-sm-6 col-md-4 col-lg-4 w-100 h-100 pb-5 ">
+                                        <div class="card w-100 border-0">
+                                            <div class="all-overlay">
+                                                <div class="parent-overlay">
+                                                    <img src="{{item.image.url}}" class="card-img-top" alt="..." height="200" width="290">
+                                                </div>
+                                                <div class="img-overlay">
+                                                    <div class="font-img">
+                                                        <a href="{% url 'index'  %}" class="btn btn-white border-1 ml-1" style="max-width: 2.3rem;"><i class="fas fa-cart-shopping text-muted fatti"></i></a>
+                                                    </div>
+                                                    <div class="font-rating">
+                                                        <small><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star-half-stroke fatti"></i></small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="card-text"><small><a href="" class="anak text-muted text-decoration-none">{{item.drug_type|title}}</a></small></p>
+                                                <h5 class="card-title "><a href="{% url 'details' item.id item.slug  %}" class="text-primary font-weight-bolder text-decoration-none">{{item.product|title}}</a></h5>
+                                                <!-- <p class="card-text text-left">{{item.details}}</p> -->
+                                                <p class="card-text text-success"><strong>£{{item.price}}</strong></p>
+                                                {% comment %}
+                                                
+                                                {% endcomment %}
+                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                {% endfor %}
+                                {% else %}
+                                    <p>
+                                        <h3>Sorry we can't find what you looking for</h3>
+                                    </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination pt-5 mt-5 justify-content-center">
+                      <li class="page-item"><a class="page-link bg-primary text-dark" href="#">Previous</a></li>
+                      <li class="page-item"><a class="page-link text-muted" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link text-muted" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link text-muted" href="#">3</a></li>
+                      <li class="page-item"><a class="page-link bg-primary text-dark" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="container">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#exampleModalScrollable1">
+                        <i class="fas fa-magnifying-glass text-primary"></i>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="seach-bar">
+                                        <!-- seach bar code -->
+                                        <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'searched' %}">
+                                            {% csrf_token %}
+                                            <input class="form-control w-75" name="itemsearch" type="search" placeholder="Search" aria-label="Search">
+                                            <button class="btn btn-outline-primary" type="submit">Search</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent">
+                        <h4><strong>RECENT <span class="posts text-primary">POSTS</span></strong></h4>
+                        <small>Provide Comprehensive</small>
+                        <hr>
+                        <div class=" d-flex mb-3">
+                            <img src="{% static '' %}image/bg_2.jpg" class="image-fluid" height="80" width="80">
+                            <div class="til ml-3">
+                                <small class="card-text text-primary">September 12, 2017</small> <br>
+                                <span class="card-title"><a href="" class="dir text-dark text-decoration-none" style="font-size: small;"><strong>Role of Genetics in Treating Low-grade Glioma</strong></a></span>
+                            </div>
+                        </div>
+                        <div class=" d-flex mb-3">
+                            <img src="{% static '' %}image/bg_2.jpg" class="image-fluid" height="80" width="80">
+                            <div class="til ml-3">
+                                <small class="card-text text-primary">September 12, 2017</small><br>
+                                <span class="card-title"><a href="" class="dir text-dark text-decoration-none" style="font-size: small;"><strong>Role of Genetics in Treating Low-grade Glioma</strong></a></span>
+                            </div>
+                        </div>
+                        <div class=" d-flex mb-3">
+                            <img src="{% static '' %}image/bg_2.jpg" class="image-fluid" height="80" width="80">
+                            <div class="til ml-3">
+                                <small class="card-text text-primary">September 12, 2017</small><br>
+                                <span class="card-title"><a href="" class="dir text-dark text-decoration-none" style="font-size: small;"><strong>Role of Genetics in Treating Low-grade Glioma</strong></a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+<br><br><br><br>
+<!-- footer content -->
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}
+
+
+
+
+{% comment %}
+<div class="card-deck">
+    <div class="card border-0">
+        <div class="all-overlay">
+            <div class="parent-overlay">
+                <img src="{% static '' %}image/product_1.jpg" class="card-img-top" alt="..." height="300" width="290">
+            </div>
+            <div class="img-overlay">
+                <div class="font-img">
+                    <!-- <a href="" class="btn btn-white border-1" style="max-width: 2.3rem;"><i class="fas fa-magnifying-glass text-muted"></i></a>
+                    <a href="" class="btn btn-white border-1 ml-1" style="max-width: 2.3rem;"><i class="fa-solid fa-heart text-muted"></i></a> -->
+                    <a href="/cart.html" class="btn btn-white border-1 ml-1" style="max-width: 2.3rem;"><i class="fas fa-cart-shopping text-muted fatti"></i></a>
+                </div>
+                <div class="font-rating">
+                    <small><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star-half-stroke fatti"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-body text-center">
+            <p class="card-text"><small><a href="" class="anak text-muted text-decoration-none">Analgesics</a></small></p>
+            <h5 class="card-title"><a href="/details.html" class="anak text-dark text-decoration-none"><strong>MAECENAS PULVINAR ODIO VEL</strong></a></h5>
+            <p class="card-text text-primary"><strong> £3.00</strong></p>
+        </div>
+    </div>
+
+
+    <div class="card border-0">
+        <div class="all-overlay">
+            <div class="parent-overlay">
+                <img src="{% static '' %}image/product_1.jpg" class="card-img-top" alt="..." height="300" width="290">
+            </div>
+            <div class="img-overlay">
+                <div class="font-img">
+                    <!-- <a href="" class="btn btn-white border-1" style="max-width: 2.3rem;"><i class="fas fa-magnifying-glass text-muted"></i></a>
+                    <a href="" class="btn btn-white border-1 ml-1" style="max-width: 2.3rem;"><i class="fa-solid fa-heart text-muted"></i></a> -->
+                    <a href="/cart.html" class="btn btn-white border-1 ml-1" style="max-width: 2.3rem;"><i class="fas fa-cart-shopping text-muted fatti"></i></a>
+                </div>
+                <div class="font-rating">
+                    <small><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star-half-stroke fatti"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-body text-center">
+            <p class="card-text"><small><a href="" class="anak text-muted text-decoration-none">Analgesics</a></small></p>
+            <h5 class="card-title"><a href="/details.html" class="anak text-dark text-decoration-none"><strong>MAECENAS PULVINAR ODIO VEL</strong></a></h5>
+            <p class="card-text text-primary"><strong> £3.00</strong></p>
+        </div>
+    </div>
+
+    <div class="card border-0">
+        <div class="all-overlay">
+            <div class="parent-overlay">
+                <img src="image/product_1.jpg" class="card-img-top" alt="..." height="300" width="290">
+            </div>
+            <div class="img-overlay">
+                <div class="font-img">
+                    <!-- <a href="" class="btn btn-white border-1" style="max-width: 2.3rem;"><i class="fas fa-magnifying-glass text-muted"></i></a>
+                    <a href="" class="btn btn-white border-1 ml-1" style="max-width: 2.3rem;"><i class="fa-solid fa-heart text-muted"></i></a> -->
+                    <a href="/cart.html" class="btn btn-white border-1 ml-1" style="max-width: 2.3rem;"><i class="fas fa-cart-shopping text-muted fatti"></i></a>
+                </div>
+                <div class="font-rating">
+                    <small><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star-half-stroke fatti"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-body text-center">
+            <p class="card-text"><small><a href="" class="anak text-muted text-decoration-none">Analgesics</a></small></p>
+            <h5 class="card-title"><a href="/details.html" class="anak text-dark text-decoration-none"><strong>MAECENAS PULVINAR ODIO VEL</strong></a></h5>
+            <p class="card-text text-primary"><strong> £3.00</strong></p>
+        </div>
+    </div>
+</div>
+<div class="card-deck">
+    <div class="card border-0">
+        <div class="all-overlay">
+            <div class="parent-overlay">
+                <img src="/image/product_1.jpg" class="card-img-top" alt="..." height="300" width="290">
+            </div>
+            <div class="img-overlay">
+                <div class="font-img">
+                    <!-- <a href="" class="btn btn-white border-1" style="max-width: 2.3rem;"><i class="fas fa-magnifying-glass text-muted"></i></a>
+                    <a href="" class="btn btn-white border-1 ml-1" style="max-width: 2.3rem;"><i class="fa-solid fa-heart text-muted"></i></a> -->
+                    <a href="/cart.html" class="btn btn-white border-1 ml-1" style="max-width: 2.3rem;"><i class="fas fa-cart-shopping text-muted fatti"></i></a>
+                </div>
+                <div class="font-rating">
+                    <small><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star-half-stroke fatti"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-body text-center">
+            <p class="card-text"><small><a href="" class="anak text-muted text-decoration-none">Analgesics</a></small></p>
+            <h5 class="card-title"><a href="/details.html" class="anak text-dark text-decoration-none"><strong>MAECENAS PULVINAR ODIO VEL</strong></a></h5>
+            <p class="card-text text-primary"><strong> £3.00</strong></p>
+        </div>
+    </div>
+
+    <div class="card border-0">
+        <div class="all-overlay">
+            <div class="parent-overlay">
+                <img src="/image/product_1.jpg" class="card-img-top" alt="..." height="300" width="290">
+            </div>
+            <div class="img-overlay">
+                <div class="font-img">
+                    <!-- <a href="" class="btn btn-white border-1" style="max-width: 2.3rem;"><i class="fas fa-magnifying-glass text-muted"></i></a>
+                    <a href="" class="btn btn-white border-1 ml-1" style="max-width: 2.3rem;"><i class="fa-solid fa-heart text-muted"></i></a> -->
+                    <a href="/cart.html" class="btn btn-white border-1 ml-1" style="max-width: 2.3rem;"><i class="fas fa-cart-shopping text-muted fatti"></i></a>
+                </div>
+                <div class="font-rating">
+                    <small><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star-half-stroke fatti"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-body text-center">
+            <p class="card-text"><small><a href="" class="anak text-muted text-decoration-none">Analgesics</a></small></p>
+            <h5 class="card-title"><a href="/details.html" class="anak text-dark text-decoration-none"><strong>MAECENAS PULVINAR ODIO VEL</strong></a></h5>
+            <p class="card-text text-primary"><strong> £3.00</strong></p>
+        </div>
+    </div>
+
+    <div class="card border-0">
+        <div class="all-overlay">
+            <div class="parent-overlay">
+                <img src="/image/product_1.jpg" class="card-img-top" alt="..." height="300" width="290">
+            </div>
+            <div class="img-overlay">
+                <div class="font-img">
+                    <!-- <a href="" class="btn btn-white border-1" style="max-width: 2.3rem;"><i class="fas fa-magnifying-glass text-muted"></i></a>
+                    <a href="" class="btn btn-white border-1 ml-1" style="max-width: 2.3rem;"><i class="fa-solid fa-heart text-muted"></i></a> -->
+                    <a href="/cart.html" class="btn btn-white border-1 ml-1" style="max-width: 2.3rem;"><i class="fas fa-cart-shopping text-muted fatti"></i></a>
+                </div>
+                <div class="font-rating">
+                    <small><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star ml-1 fatti"></i><i class="fas fa-star-half-stroke fatti"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-body text-center">
+            <p class="card-text"><small><a href="" class="anak text-muted text-decoration-none">Analgesics</a></small></p>
+            <h5 class="card-title"><a href="/details.html" class="anak text-dark text-decoration-none"><strong>MAECENAS PULVINAR ODIO VEL</strong></a></h5>
+            <p class="card-text text-primary"><strong> £3.00</strong></p>
+        </div>
+    </div>
+</div>                      
+{% endcomment %}

@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% load humanize %}
+
+
+<!-- title section -->
+{% block title %} | Details{% endblock title %}
+
+
+<!-- upper header section -->
+{% block header %} {% include "header.html" %} {% endblock header %}
+
+
+<!-- banner section -->
+{% block banner %}
+
+{% endblock banner %}
+
+<!-- content section -->
+{% block content %}
+<br> <br>
+<div class="details-page">
+    <p><a href="{% url 'pharmacy' %}" class="text-decoration-none ml-4 text-muted" style="padding-left: 1em;"><i class=" fas fa-arrow-left"></i> Go Back</a></p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="container-fluid">
+                    <div class="card mb-3 mx-auto border-0" style="max-width: 960px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-5">
+                                <img src="{{detail.image.url}}" class="card-img" alt="..." height="300" width="190" style="border: 2px solid whitesmoke;">
+                                <div class="3d-pics ml-5" style="margin-top: -2rem;">
+                                    <img src="{{detail.image.url}}" class="img-fluid" height="60" width="80" style="border: 2px solid whitesmoke;">
+                                    <img src="{{detail.image.url}}" class="img-fluid" height="60" width="80" style="border: 2px solid whitesmoke;">
+                                    <img src="{{detail.image.url}}" class="img-fluid" height="60" width="80" style="border: 2px solid whitesmoke;">
+                                </div> 
+                            </div>
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h4 class="card-title anak"><strong>{{detail.product|title}}</strong></h4>
+                                    <p class="card-text anak mt-4"><strong>£{{detail.price}}</strong></p>
+                                    <p class="card-text prod"><small>{{detail.details}}</small></p>
+                                    <form action="{% url 'addtocart' %}" method="POST" class="d-flex">
+                                    {% csrf_token %}
+                                        <div>
+                                            <span for="exampleInputText"> QTY</span>
+                                            <input type="number" name="quantity" placeholder="Quantity" class="w-100 h-50" value="1" min="{{detail.min_order}}" max="{{detail.max_order}}" id="exampleInputText" aria-describedby="texthelp">
+                                            <input type="hidden" name="drugid" value="{{detail.id}}">
+                                        </div>
+                                        
+                                        <button type="submit" class="btn mi w-50 ml-5">Add To Cart</button><br>
+                                    </form>
+                                    <!-- <input type="number" class="w-25 h-50" min="1" max="4">
+                                    <a href="" class="btn btn-primary h-25 ml-3">Add to Cart</a><br> -->
+                                    <p class="card-text pt-"><small class="prod"><strong>Category:</strong><a href="{% url 'index'  %}" class="sub text-dark text-decoration-none"> {{detail.drug_type}}</a></small></p>
+                                    <p class="card-text"><small class="prod"><strong>Tags:</strong><a href="{% url 'pharmacy'  %}" class="sub text-dark text-decoration-none"> Medical</a>,<a href="{% url 'index'  %}" class="sub text-dark text-decoration-none"> Product</a>,<a href="{% url 'pharmacy'  %}" class="sub text-dark text-decoration-none"> Shop</a></small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br><br><br><br><br>
+                    <div class="product-des pt-5 mb-5 pb-5">
+                        <div class="description text-left">
+                            <h3><strong> Product Description</strong></h3>
+                            <small><strong>Note:</strong> Scroll to see the overviews and pharmacy advice</small><br>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <nav id="navbar-example2" class="navbar navbar-light bg-light px-3">
+                                        <ul class="nav nav-pills" style="display: inline;">
+                                          <li class="nav-item">
+                                            <a class="nav-link head-stuff" href="#scrollspyHeading1">Overview</a>
+                                          </li>
+                                          <li class="nav-item">
+                                            <a class="nav-link head-stuff" href="#scrollspyHeading2">How To Use</a>
+                                          </li>
+                                          <li class="nav-item">
+                                            <a class="nav-link head-stuff" href="#scrollspyHeading3">Pharmacy advice</a>
+                                          </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example" tabindex="0" style="overflow-y: scroll;height: 30rem;">
+                                        <p style="font-family: 'Poppins', sans-serif;" id="scrollspyHeading1">
+                                            <p><strong>About this item</strong></p>
+                                            {{detail.overview}}
+                                            <br>
+                                            <p><strong>Side Effects:</strong></p>
+                                            {{detail.effect}}
+                                            &nbsp;
+                                            <p><strong>Active Ingredient:</strong></p>
+                                            {{detail.ingredient}}
+                                        </p>
+                                        <hr>
+                                        <p style="font-family: 'Poppins', sans-serif;" id="scrollspyHeading2">
+                                            <p><strong>How to use:</strong></p> 
+                                            {{detail.how_to_use}}
+                                        </p>
+                                        <hr>
+                                        <p style="font-family: 'Poppins', sans-serif;" id="scrollspyHeading3">
+                                            <p><strong>Advice:</strong></p>
+                                            {{detail.advice}}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br><br>
+                    <div class="related-prod container">
+                        <h2><strong>Related Product</strong></h2>
+                        <div class="card-deck">
+                            {% if shop %}
+                                {% for item in shop %}
+                                    <div class="card border-0">
+                                        <img src="{{item.image.url}}" class="card-img-top" alt="..." height="230" width="10">
+                                        <div class="card-body text-center">
+                                            <p class="card-text"><small><a href="{% url 'index'  %}" class="anak text-decoration-none">{{item.drug_type|title}}</a></small></p>
+                                            <h5 class="card-title"><a href="{% url 'all_drugs'  %}" class="anak text-decoration-none"><strong>{{item.product|title}}</strong></a></h5>
+                                            <p class="card-text anak"><strong> £{{item.price}}</strong></p>
+                                        </div>
+                                    </div>
+                                                                    
+                                {% endfor %}
+                                
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="container">
+                    <div class="recent">
+                        <h4><strong>RECENT <span class="prod">POSTS</span></strong></h4>
+                        <small>Provide Comprehensive</small>
+                        <hr>
+                        <div class=" d-flex mb-3">
+                            <img src="{% static '' %}image/bg_2.jpg" class="image-fluid" height="80" width="80">
+                            <div class="til ml-3">
+                                <small class="card-text anak">September 12, 2017</small> <br>
+                                <span class="card-title"><a href="#" class="prod text-decoration-none" style="font-size: small;"><strong>Role of Genetics in Treating Low-grade Glioma</strong></a></span>
+                            </div>
+                        </div>
+                        <div class=" d-flex mb-3">
+                            <img src="{% static '' %}image/bg_2.jpg" class="image-fluid" height="80" width="80">
+                            <div class="til ml-3">
+                                <small class="card-text anak">September 12, 2017</small><br>
+                                <span class="card-title"><a href="#" class="prod text-decoration-none" style="font-size: small;"><strong>Role of Genetics in Treating Low-grade Glioma</strong></a></span>
+                            </div>
+                        </div>
+                        <div class=" d-flex mb-3">
+                            <img src="{% static '' %}image/bg_2.jpg" class="image-fluid" height="80" width="80">
+                            <div class="til ml-3">
+                                <small class="card-text anak">September 12, 2017</small><br>
+                                <span class="card-title"><a href="#" class="prod text-decoration-none" style="font-size: small;"><strong>Role of Genetics in Treating Low-grade Glioma</strong></a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+<!-- footer content -->
+{% block footer %} {% include "footer.html" %} {% endblock footer %}

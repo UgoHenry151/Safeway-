@@ -1,0 +1,283 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+
+{% block title %} | Profile |Update Profile{% endblock title %}
+
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+    
+
+{% block banner %}
+    
+{% endblock banner %}
+    
+
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row justify-content-start">
+        <div class="col-12 col-md-3">
+            <nav class="navbar navbar-expand-sm navbar-light bg-transparent nav-edit">
+                <a class="navbar-toggler border-0" type="button" data-toggle="collapse" href="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <span class="navbar-toggler-icon bg-primary rounded" style="font-size: 1rem;"></span>
+                    <!-- <span><strong>SideBar</strong></span> -->
+                </a>
+                <a class="navbar-brand mb-5 pb-5 mt-4 anak" id="home" href="{% url 'index' %}">Home</a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="display: inline-block;">
+                        <a class="nav-link mb-3 link-edit" href="{% url 'dashboard' %}">Dashboard</a>
+                        <a class="nav-link mb-3 profditt" href="#item-1">Update</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'cart' %}">Cart</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'pharmacy' %}">Shop</a>
+                        <a class="nav-link profdit mb-3" href="{% url 'profile' %}"> Profile </a>
+                        <a class="nav-link mb-3 profdit" href="{% url 'recovery' %}">Change Password</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'newappoint' %}">Appointment</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'prescription' %}">Prescription</a>
+                        <a class="nav-link text-muted link-editt" href="#"><small>Help And Support</small></a>
+                        <a class="nav-link text-muted link-edite" href="#">Preferences</a>
+                    </ul>
+                </div>
+            </nav>
+            {% comment %}
+                <nav id="navbar-example3" class="navbar navbar-light bg-transparent w-75 nav-edit">
+                <a class="navbar-brand mb-5 pb-5 mt-4 text-primary" href="{% url 'index' %}">Home</a>
+                <nav class="nav" style="display: block;">
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'dashboard' %}">Dashboard</a>
+                    <a class="nav-link text-primary mb-3 profdit" href="#item-1">Edit Profile</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'cart' %}">Cart</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'pharmacy' %}">Shop</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="#">Doctors</a>
+                    <a class="nav-link text-primary profdit mb-3" href="{% url 'profile' %}"> View Profile </a>
+                    <a class="nav-link text-primary mb-3 profdit" href="{% url 'recovery' %}">Change Password</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'index' %}">Appointment</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'prescription' %}">Prescription</a>
+                    <a class="nav-link text-muted link-editt" href="#"><small>Help And Support</small></a>
+                    <a class="nav-link text-muted link-edit" href="#">Preferences</a>
+                </nav>
+                </nav>
+              
+            {% endcomment %}
+            
+        </div>
+        <div class="col-12 col-md-9 profile-col">
+            <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+                <p id="item-1">
+                    <div class="patient-edit">
+                        <div class="container-flui">
+                            <div class="row">
+                                <!-- <div class="col-md-3 align-self-right">
+                                    <img src="" class="image-fluid pt-5 mt-5" alt="click to upload your image here" height="100" width="100">
+                                </div> -->
+                                <div class="col-12 bg-light">
+                                    <form action="{% url 'proedit' %}" method="POST" class="sign w-75 mx-auto" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <h3 class="anak pt-4">Personal Information</h3>
+                                        <hr>
+                                        <div class="form-row">
+                                            <div class="col-md-6 align-self-right">
+                                                <img src="{{load_profile.image.url}}" class="rounded-circle mt-1" alt="click to upload your image here" height="160" width="300">
+                                                
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputName">Full Name</label>
+                                                        {{form.fullname}}
+                                                        <!-- <input type="text" name="fullname" class="form-control" id="inputName" placeholder="fullname" required> -->
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputName">Date of Birth</label>
+                                                        {{form.date_of_birth}}
+                                                        <!-- <input type="text" name="date_of_birth" class="form-control" id="inputName" placeholder="Birthday" required> -->
+                                                    </div>
+                                                </div>
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputEmail4">Email</label>
+                                                        {{form.email}}
+                                                        <!-- <input type="email" name="email" class="form-control" id="inputEmail4" required> -->
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="inputState">Marital Status</label>
+                                                        {{form.marital_status}}
+                                                        <!-- <select id="inputState" name="marital_status" class="form-control" required>
+                                                            <option selected>Choose...</option>
+                                                            <option>Mr</option>
+                                                            <option>Mrs</option>
+                                                            <option>Miss</option>
+                                                            <option>Bruv</option>
+                                                            <option>Sis</option>
+                                                        </select> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputPhone">Phone Number</label>
+                                                {{form.phone_number}}
+                                                <!-- <input type="text" name="phone_number" class="form-control" id="inputPhone" required> -->
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputState">Sex</label>
+                                                {{form.sex}}
+                                                <!-- <select id="inputState" name="sex" class="form-control" required>
+                                                    <option selected>Choose...</option>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                    <option>Other</option>
+                                                </select> -->
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputName">Patient Weight</label>
+                                                {{form.patient_weight}}
+                                                <!-- <input type="text" name="patient_weight" class="form-control" id="inputName" placeholder="Patient Weight" required> -->
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputName">Patient Height</label>
+                                                {{form.patient_height}}
+                                                <!-- <input type="text" name="patient_height" class="form-control" id="inputName" placeholder="Patient Height" required> -->
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputAddress">Address</label>
+                                                {{form.address}}
+                                                <!-- <input type="text" name="address" class="form-control" id="inputAddress" placeholder="1234 Main St" required> -->
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputState">Blood Group</label>
+                                                {{form.blood_group}}
+                                                <!-- <select id="inputState" name="blood_group" class="form-control" required>
+                                                    <option selected>Choose...</option>
+                                                    <option>A+</option>
+                                                    <option>A-</option>
+                                                    <option>O+</option>
+                                                    <option>O-</option>
+                                                    <option>B+</option>
+                                                    <option>B-</option>
+                                                    <option>AB+</option>
+                                                    <option>AB-</option>
+                                                </select> -->
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                          <div class="form-group col-md-6">
+                                            <label for="inputCity">City</label>
+                                            {{form.city}}
+                                            <!-- <input type="text" name="city" class="form-control" id="inputCity" required> -->
+                                          </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="inputState">State</label>
+                                                {{form.state}}
+                                                <!-- <select id="inputState" name="state" class="form-control" required>
+                                                    <option selected>Choose...</option>
+                                                    <option>...</option>
+                                                    <option>...</option>
+                                                    <option>...</option>
+                                                    <option>...</option>
+                                                    <option>...</option>
+                                                    <option>...</option>
+                                                    <option>...</option>
+                                                    <option>...</option>
+                                                    <option>...</option>
+                                                    <option>...</option>
+                                                </select> -->
+                                            </div>
+                                          <div class="form-group col-md-2">
+                                            <label for="inputZip">Zip</label>
+                                            {{form.zip}}
+                                            <!-- <input type="text" name="zip" class="form-control" id="inputZip" required> -->
+                                          </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="my-textarea">History</label>
+                                            {{form.history}}
+                                            <!-- <textarea id="my-textarea" name="history" class="form-control" name="" rows="3"></textarea> -->
+                                        </div>
+                                        <span>
+                                            <strong>IMAGE</strong>: {{form.image}}
+                                        </span>
+                                        <div class="anodatails">
+                                            <h3 class="anak">Medical Information</h3>
+                                            <hr>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-2">
+                                                    <label for="InputName">Taking Any Medications</label> <br>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="customRadioInline1" name="medication" class="custom-control-input">
+                                                        <label class="custom-control-label" for="customRadioInline1">Yes</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="customRadioInline2" name="medication" class="custom-control-input">
+                                                        <label class="custom-control-label" for="customRadioInline2">No</label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="inputDisease">Known Disease</label>
+                                                    <input type="text" name="disease" class="form-control" id="inputDisease">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                  <label for="inputPeriod">Period</label>
+                                                  <input type="text" name="period" class="form-control" id="inputPeriod">
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputFamilyHistory">Family History</label>
+                                                    {{form.family}}
+                                                    <!-- <select id="inputFamilyHistory" name="family" class="form-control" required>
+                                                        <option selected>Choose...</option>
+                                                        <option>Father</option>
+                                                        <option>Mother</option>
+                                                    </select> -->
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputAddress">Details</label>
+                                                    {{form.details}}
+                                                    <!-- <input type="text" name="details" class="form-control" id="inputAddress" placeholder="Text" required> -->
+                                                </div>
+                                            </div>
+                        
+                                            <div class="form-group">
+                                                <label for="InputName">Would you like to access your UH medical records? <br>
+                                                   <b>Note:</b> You will have access to your appointment history, cancellations, reschedules, etc.</label> <br>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="customRadioInline3" name="records" class="custom-control-input">
+                                                    <label class="custom-control-label" for="customRadioInline3">Yes</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="customRadioInline4" name="records" class="custom-control-input">
+                                                    <label class="custom-control-label" for="customRadioInline4">No</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                        
+                                        <hr>
+                        
+                                        <button type="submit" class="btn mi mb-4">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+    
+
+
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}
+    

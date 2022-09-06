@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% load humanize %}
+
+<!-- title section -->
+{% block title %} | Contact Us{% endblock title %}
+
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+
+
+{% block banner %}
+    
+{% endblock banner %}
+
+
+<!-- content section -->
+{% block content %}
+<div class="container-fluid">
+    &nbsp;
+    <div class="piy text-center">
+      <h2><strong>Give Us Your Message </strong></h2>
+    </div>
+    &nbsp;
+    <div class="row justify-content-around">
+        <div class="col-sm-5" data-aos="fade-right" data-aos-duration="3000">
+            <div class=" col map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126845.9688590749!2d3.2933165172058976!3d6.529701144648197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b9228fa2a3999%3A0xd7a8324bddbba1f0!2sIkeja!5e0!3m2!1sen!2sng!4v1644915700070!5m2!1sen!2sng"  style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+
+        <div class="col-sm-6" data-aos="fade-left" data-aos-duration="3000">
+            <form action="{% url 'contact_us' %}" method="POST" class="">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label id="tap" for="inputName">Full Name</label>
+                    <input type="text" name="fullname" class="form-control" id="inputName" placeholder="fullname" required>
+                </div>
+                <div class="form-group">
+                    <label id="tap" for="inputEmail">Email</label>
+                    <input id="inputEmail" name="email" placeholder="Email" class="form-control" type="email" name="">
+                </div>
+                <div class="form-group">
+                    <label id="tap" for="inputText">Phone Number</label>
+                    <input id="inputText" name="phone_number" placeholder="Phone" class="form-control" type="text" name="">
+                </div>
+                <div class="form-group">
+                    <label id="tap" for="my-textarea">Message</label>
+                    <textarea id="my-textarea" class="form-control" name="message"  placeholder="message" rows="10"></textarea>
+                </div>   
+                <div class="">
+                    <button class="btn mi w-50 mt-2">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container pt-5 mt-2">
+    <div class="card-deck">
+        <div class="card border-0 text-center pt-2 fomp" data-aos="fade-up" data-aos-duration="1500">
+            <button disabled="disabled" class="tr mx-auto border-radius-3 rounded-circle bg-white border-0" style="height: 6rem;width: 6rem"><i class="fa-solid fa-at fa-1x fomt"></i></button>
+            <!-- <img src="/image/person_2.jpg" class="rounded-circle mx-auto" height="60" width="60"> -->
+            <div class="card-body pt-5">
+                <h5 class="card-title text-muted">SUPPORT ADDRESS</h5>
+                <p class="card-text pt-3 mb-3"><a href="" class="text-dark text-decoration-none">support@gmail.com</small></p>
+            </div>
+        </div>
+        <div class="card border-0 text-center pt-2 fomp" data-aos="fade-up" data-aos-duration="2000">
+            <button disabled="disabled" class="font-bt mx-auto border-radius-3 rounded-circle border-0"><i class="fa-solid fa-phone fa-1x fomt"></i></button>
+            <div class="card-body pt-5">
+                <h5 class="card-title text-muted">CONTACT NUMBER</h5>
+                <p class="card-text pt-2 mb-3"><a href="" class="w text-dark text-decoration-none">+ 1235 2355 98</a></p>
+            </div>
+        </div>
+        <div class="card border-0 text-center pt-2 fomp" data-aos="fade-up" data-aos-duration="2500">
+            <button disabled="disabled" class="font-bt mx-auto border-radius-3 rounded-circle border-0"><i class="fa-solid fa-circle-info fa-1x fomt"></i></button>
+            <div class="card-body pt-5">
+                <h5 class="card-title text-muted">RELATED INFO</h5>
+                <p class="card-text pt-2 mb-3"><a href="" class="w text-dark text-decoration-none">info@yoursite.com</a></p>
+            </div>
+        </div>
+        <div class="card border-0 text-center pt-2 fomp" data-aos="fade-up" data-aos-duration="3000">
+            <button disabled="disabled" class="font-bt mx-auto border-radius-3 rounded-circle border-0"><i class="fa-solid fa-paper-plane fa-1x fomt"></i></button>
+            <div class="card-body pt-5">
+                <h5 class="card-title text-muted">HELP DESK</h5>
+                <p class="card-text pt-2 mb-3"><a href="" class="w text-dark text-decoration-none">help@gmail.com</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

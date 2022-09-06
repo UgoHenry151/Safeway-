@@ -1,0 +1,361 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% load humanize %}
+
+
+<!-- title section -->
+{% block title %} | Department{% endblock title %}
+
+
+
+{% block header %} {% include "header.html" %} {% endblock header %}
+
+
+{% block banner %}
+
+{% endblock banner %}
+
+<!-- content section -->
+{% block content %}
+<div class="container pt-5 pb-5">
+    <div class="row justify-content-between">
+        <div class="col-md-6">
+            <div class="card mb-3 border-0 deot" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{% static '' %}image/dental1.jpg" class="card-img mt-4" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title dep"><strong>Dental</strong></h5>
+                            <p class="card-text">
+                                Our excellent service, friendly team and state-of-the-art 
+                                facility ensure you will receive the high quality, 
+                                personalized Dental care
+                            </p>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn mi" id="mi" data-toggle="modal" data-target="#exampleModalScrollable">
+                                Read More
+                            </button>
+      
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <!-- <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div> -->
+                                        <div class="modal-body">
+                                            <h3 class="dental">DENTAL & ORAL</h3><br>
+                                            At The <span class="log">MEDICAL</span> Hospital's Department of Dentistry, our dentists provide comprehensive 
+                                            care to meet each patient's oral health needs. Treatments cover the full spectrum of dental 
+                                            needs for adults, children, and special needs patients. Our expertise encompass all phases of 
+                                            general dentistry, such as restorative, cosmetic, endodontic, periodontic, fixed and removable prosthetic, 
+                                            and implant services, as well as treatment for temporomandibular joint (TMJ) dysfunction disorders. <br>
+                                            Some of the most common treatments we provide include:
+                                            <ul class="ml-5">
+                                                <li>Veneers</li>
+                                                <li>Teeth Whitening</li>
+                                                <li>Dentures</li>
+                                                <li>Dental Implants</li>
+                                                <li>Extraction of Impacted Teeth / Wisdom Tooth Extraction</li>
+                                            </ul>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn mi" id="mi" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3 border-0 deot" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{% static '' %}image/optical1.jpg" class="card-img mt-4" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title dep"><strong>Optical</strong></h5>
+                            <p class="card-text">
+                                Our excellent service, friendly team and state-of-the-art 
+                                facility ensure you will receive the high quality, 
+                                personalized Optical care
+                            </p>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn mi" id="mi" data-toggle="modal" data-target="#exampleModalScrollable1">
+                                Read More
+                            </button>
+      
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <!-- <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div> -->
+                                        <div class="modal-body">
+                                            <h3 class="dental">Optical Treatment</h3><br>
+                                            At The <span class="log">MEDICAL</span> Hospital's Department of Dentistry, our dentists provide comprehensive 
+                                            care to meet each patient's oral health needs. Treatments cover the full spectrum of dental 
+                                            needs for adults, children, and special needs patients. Our expertise encompass all phases of 
+                                            general dentistry, such as restorative, cosmetic, endodontic, periodontic, fixed and removable prosthetic, 
+                                            and implant services, as well as treatment for temporomandibular joint (TMJ) dysfunction disorders. <br>
+                                            Some of the most common treatments we provide include:
+                                            <ul class="ml-5">
+                                                <li>Veneers</li>
+                                                <li>Teeth Whitening</li>
+                                                <li>Dentures</li>
+                                                <li>Dental Implants</li>
+                                                <li>Extraction of Impacted Teeth / Wisdom Tooth Extraction</li>
+                                            </ul>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn mi" id="mi" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3 border-0 deot" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{% static '' %}image/paediatrics1.jpeg" class="card-img mt-4" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title dep"><strong>Paediatrics</strong></h5>
+                            <p class="card-text">
+                                Our excellent service, friendly team and state-of-the-art 
+                                facility ensure your child receive the high quality, 
+                                personalized care
+                            </p>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn mi" id="mi" data-toggle="modal" data-target="#exampleModalScrollable2">
+                                Read More
+                            </button>
+      
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalScrollable2" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <!-- <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div> -->
+                                        <div class="modal-body">
+                                            <h3 class="dental">Paediatrics</h3><br>
+                                            At The <span class="log">MEDICAL</span> Hospital's Department of Dentistry, our dentists provide comprehensive 
+                                            care to meet each patient's oral health needs. Treatments cover the full spectrum of dental 
+                                            needs for adults, children, and special needs patients. Our expertise encompass all phases of 
+                                            general dentistry, such as restorative, cosmetic, endodontic, periodontic, fixed and removable prosthetic, 
+                                            and implant services, as well as treatment for temporomandibular joint (TMJ) dysfunction disorders. <br>
+                                            Some of the most common treatments we provide include:
+                                            <ul class="ml-5">
+                                                <li>Veneers</li>
+                                                <li>Teeth Whitening</li>
+                                                <li>Dentures</li>
+                                                <li>Dental Implants</li>
+                                                <li>Extraction of Impacted Teeth / Wisdom Tooth Extraction</li>
+                                            </ul>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn mi" id="mi" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mb-3 border-0 deot" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{% static '' %}image/Gynecology1.jpg" class="card-img mt-4" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title dep"><strong>Gynecology</strong></h5>
+                            <p class="card-text">
+                                Our excellent service, friendly team and state-of-the-art 
+                                facility ensure you will receive the high quality, 
+                                personalized care for your unborn child
+                            </p>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn mi" id="mi" data-toggle="modal" data-target="#exampleModalScrollable3">
+                                Read More
+                            </button>
+      
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalScrollable3" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <!-- <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div> -->
+                                        <div class="modal-body">
+                                            <h3 class="dental">Gynecology</h3><br>
+                                            At The <span class="log">MEDICAL</span> Hospital's Department of Dentistry, our dentists provide comprehensive 
+                                            care to meet each patient's oral health needs. Treatments cover the full spectrum of dental 
+                                            needs for adults, children, and special needs patients. Our expertise encompass all phases of 
+                                            general dentistry, such as restorative, cosmetic, endodontic, periodontic, fixed and removable prosthetic, 
+                                            and implant services, as well as treatment for temporomandibular joint (TMJ) dysfunction disorders. <br>
+                                            Some of the most common treatments we provide include:
+                                            <ul class="ml-5">
+                                                <li>Veneers</li>
+                                                <li>Teeth Whitening</li>
+                                                <li>Dentures</li>
+                                                <li>Dental Implants</li>
+                                                <li>Extraction of Impacted Teeth / Wisdom Tooth Extraction</li>
+                                            </ul>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn mi" id="mi" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3 border-0 deot" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{% static '' %}image/Surgical1.jpg" class="card-img mt-4" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title dep"><strong>Surgical</strong></h5>
+                            <p class="card-text">
+                                Our excellent service, friendly team and state-of-the-art 
+                                facility ensure you will receive the high quality, 
+                                personalized Surgical treatment
+                            </p>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn mi" id="mi" data-toggle="modal" data-target="#exampleModalScrollable4">
+                                Read More
+                            </button>
+      
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalScrollable4" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <!-- <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div> -->
+                                        <div class="modal-body">
+                                            <h3 class="dental">Surgical</h3><br>
+                                            At The <span class="log">MEDICAL</span> Hospital's Department of Dentistry, our dentists provide comprehensive 
+                                            care to meet each patient's oral health needs. Treatments cover the full spectrum of dental 
+                                            needs for adults, children, and special needs patients. Our expertise encompass all phases of 
+                                            general dentistry, such as restorative, cosmetic, endodontic, periodontic, fixed and removable prosthetic, 
+                                            and implant services, as well as treatment for temporomandibular joint (TMJ) dysfunction disorders. <br>
+                                            Some of the most common treatments we provide include:
+                                            <ul class="ml-5">
+                                                <li>Veneers</li>
+                                                <li>Teeth Whitening</li>
+                                                <li>Dentures</li>
+                                                <li>Dental Implants</li>
+                                                <li>Extraction of Impacted Teeth / Wisdom Tooth Extraction</li>
+                                            </ul>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn mi" id="mi" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3 border-0 deot" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{% static '' %}image/Laboratory1.jpg" class="card-img mt-4" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title dep"><strong>Laboratory</strong></h5>
+                            <p class="card-text">
+                                Our Laboratory, state-of-the-art 
+                                facility ensure you will receive the high quality, 
+                                personalized care
+                            </p>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn mi" id="mi" data-toggle="modal" data-target="#exampleModalScrollable5">
+                                Read More
+                            </button>
+      
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalScrollable5" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <h3 class="dental">Laboratory</h3><br>
+                                            At The <span class="log">MEDICAL</span> Hospital's Department of Dentistry, our dentists provide comprehensive 
+                                            care to meet each patient's oral health needs. Treatments cover the full spectrum of dental 
+                                            needs for adults, children, and special needs patients. Our expertise encompass all phases of 
+                                            general dentistry, such as restorative, cosmetic, endodontic, periodontic, fixed and removable prosthetic, 
+                                            and implant services, as well as treatment for temporomandibular joint (TMJ) dysfunction disorders. <br>
+                                            Some of the most common treatments we provide include:
+                                            <ul class="ml-5">
+                                                <li>Veneers</li>
+                                                <li>Teeth Whitening</li>
+                                                <li>Dentures</li>
+                                                <li>Dental Implants</li>
+                                                <li>Extraction of Impacted Teeth / Wisdom Tooth Extraction</li>
+                                            </ul>
+                                            
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn mi" id="mi" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+
+
+<br><br><br><br>
+<!-- footer content -->
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

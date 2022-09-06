@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+
+
+{% load static %}
+{% load humanize %}
+
+
+<!-- title section -->
+{% block title %} | password Recovery{% endblock title %}
+
+
+<!-- upper header section -->
+{% block header %} {% include "header.html" %} {% endblock header %}
+
+
+<!-- banner section -->
+{% block banner %}
+
+{% endblock banner %}
+
+<!--content -->
+{% block content %}
+<div class="container-flui">
+    <div class="row">
+        <div class="col-12 col-md-3">
+            <nav class="navbar navbar-expand-sm navbar-light bg-transparent nav-edit">
+                <a class="navbar-toggler border-0" type="button" data-toggle="collapse" href="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <span class="navbar-toggler-icon bg-primary rounded" style="font-size: 1rem;"></span>
+                    <!-- <span><strong>SideBar</strong></span> -->
+                </a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="display: inline-block;">
+                        <a class="nav-link mb-3 link-edit" href="{% url 'dashboard' %}">Dashboard</a>
+                        <a class="nav-link mb-3 profdit" href="{% url 'proedit' %}">Update</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'cart' %}">Cart</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'pharmacy' %}">Shop</a>
+                        <a class="nav-link profdit mb-3" href="{% url 'profile' %}"> Profile </a>
+                        <a class="nav-link mb-3 profditt" href="#item-1">Change Password</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'newappoint' %}">Appointment</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'prescription' %}">Prescription</a>
+                        <a class="nav-link text-muted link-editt" href="#"><small>Help And Support</small></a>
+                        <a class="nav-link text-muted link-edite" href="#">Preferences</a>
+                    </ul>
+                </div>
+            </nav>
+            {% comment %}
+                <nav id="navbar-example3" class="navbar navbar-light bg-transparent w-75 nav-edit">
+                <a class="navbar-brand mb-5 pb-5 mt-4 text-primary" href="{% url 'index' %}">Home</a>
+                <nav class="nav" style="display: block;">
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'dashboard' %}">Dashboard</a>
+                    <a class="nav-link text-primary mb-3 profdit" href="{% url 'proedit' %}">Edit Profile</a>
+                    <!-- <nav class="nav nav-pills flex-column">
+                        <a class="nav-link text-primary mb-3 link-edit ml-3 my-1" href="#item-1-1">Item 1-1</a>
+                        <a class="nav-link text-primary mb-3 link-edit ml-3 my-1" href="#item-1-2">Item 1-2</a>
+                    </nav> -->
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'cart' %}">Cart</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'pharmacy' %}">Shop</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="#">Doctors</a>
+                    <a class="nav-link text-primary profdit mb-3" href="{% url 'profile' %}"> View Profile </a>
+                    <a class="nav-link text-primary mb-3 profdit" href="#item-1">Change Password</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'index' %}">Appointment</a>
+                    <a class="nav-link text-primary mb-3 link-edit" href="{% url 'prescription' %}">Prescription</a>
+                    <!-- <nav class="nav nav-pills flex-column">
+                        <a class="nav-link ml-3 my-1" href="#item-3-1">Item 3-1</a>
+                        <a class="nav-link ml-3 my-1" href="#item-3-2">Item 3-2</a>
+                    </nav> -->
+                    <a class="nav-link text-muted link-editt" href="#"><small>Help And Support</small></a>
+                    <a class="nav-link text-muted link-edit" href="#">Preferences</a>
+                </nav>
+                </nav>
+            {% endcomment %}   
+        </div>
+        <div class="col-12 col-md-9 profile-col">
+            <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+                <p id="item-1">
+                    <div class="patient-edit">
+                        <div class="container-flui">
+                            <div class="">
+                                <div class="col-12 bg-light table-responsive">
+                                    <h4 class="pient pt-5">Change Password</h4>
+                                    <hr>
+                                    <br><br>
+                                    <form action="{% url 'recovery' %}" method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        {{form.as_p}}
+                                        
+                                        {% comment %}                                       
+                                        <div class="form-group">
+                                            <label for="inputName">Former Password</label> <br>
+                                            {{form.old_password}}                        
+                                            <input type="password" name="old_password" class="form-control" id="inputPassword3" placeholder="Old Password" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword4">New Password</label>
+                                            {{form.new_password}} 
+                                            <input type="password" name="new_password" class="form-control" id="inputPassword4" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword4">Confirm Password</label>
+                                            <small id="passwordHelpBlock" class="form-text text-muted">
+                                                <b>Note:</b> Must contain uppercase, lowercase, one number and one special character 
+                                            </small>
+                                            {{form.confirm_password}} 
+                                            <input type="password" name="confirm_password" class="form-control" id="inputPassword5" required>
+                                        </div>
+                                        {% endcomment %}
+                                            
+                                        <button type="submit" class="btn mi w-50">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+  
+<!-- footer content -->
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

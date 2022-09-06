@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+
+<!-- title section -->
+{% block title %} | Thankyou{% endblock title %}
+
+<!-- upper header section -->
+{% block header %} {% include "header.html" %} {% endblock header %}
+
+{% block banner %}
+  
+{% endblock banner %}
+
+<!-- content section -->
+{% block content %}
+<div class="thankyou-page mt-5 pt-5">
+  <div class="container mt-5">
+    <div class="container-fluid">
+      <div class="thankyou-summary text-center mx-auto bg-light w-100">
+        <div class="thankyou pt-4">
+          <h4 class="anak">Your payment was successful</h4>
+          <hr>
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Laborum expedita ea odit ex autem nobis consectetur voluptate 
+            cupiditate quaerat ipsum.
+          </span>
+          <div class="cart-total d-flex container mt-3 pb-4">
+            <a href="{% url 'index' %}" class="btn im w-25 mx-auto">Home</a>
+            <a href="{% url 'pharmacy' %}" class="btn mi w-25 mr-auto">Pharmacy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+
+<!-- footer content -->
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}

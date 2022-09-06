@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+
+{% block title %} | pharmacy {% endblock title %}
+
+
+{% block header %} {% include 'header.html' %} {% endblock header %}
+    
+
+{% block banner %}
+    
+{% endblock banner %}
+    
+
+
+{% block content %}
+
+<div class="details-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">                
+                <div class="shop-prod">
+                    <div class="d-flex">
+                        <h4 class="prod"><strong>Malaria Medicines</strong></h4><p><a href="{% url 'all_drugs' %}" class="text-decoration-none prods">see more...</a></p>
+                    </div>
+                    &nbsp; &nbsp;
+                    <div class="card-deck">
+                        {% if malaria %}
+                            {% for item in malaria %}
+                    
+                                <div class="card border-0 w-100 h-100" >
+                                    <div class="all-overlay">
+                                        <div class="parent-overlay">
+                                            <img src="{{item.image.url}}" class="card-img-top" alt="..." height="200" width="290">
+                                        </div>
+                                        <div class="img-overlay">
+                                            <div class="font-img">
+                                                <a href="{% url 'details' item.id item.slug  %}" class="btn btn-white border-1 ml-1 anas" style="max-width: 2.3rem;"><i class="fas fa-cart-shopping"></i></a>
+                                            </div>
+                                            <div class="font-rating">
+                                                <span><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star-half-stroke anas"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <p class="card-text"><small><a href="" class="anak text-muted text-decoration-none">{{item.drug_type|title}}</a></small></p>
+                                        <h5 class="card-title"><a href="{% url 'details' item.id item.slug  %}" class="anak text-decoration-none"><strong>{{item.product|title}}</strong></a></h5>
+                                        <!-- <p class="card-text text-left">{{item.details}}</p> -->
+                                        <p class="card-text anak"><strong>£{{item.price}}</strong></p>
+                                        <!-- <p><a href="{% url 'all_drugs' %}" class="btn btn-primary text-decoration-none text-white">View All</a></p> -->
+                                    </div>
+                                </div>   
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+                <hr>
+
+                <div class="shop-prod">
+                    <div class="d-flex">
+                        <h4 class="prod"><strong>Antibiotics</strong></h4><p><a href="{% url 'all_drugs' %}" class="text-decoration-none prods">see more...</a></p>
+                    </div>
+                    &nbsp; &nbsp;
+                    <div class="card-deck">
+                        {% if antibiotics %}
+                            {% for item in antibiotics %}
+                        
+                                <div class="card border-0">
+                                    <div class="all-overlay">
+                                        <div class="parent-overlay">
+                                            <img src="{{item.image.url}}" class="card-img-top" alt="..." height="200" width="290">
+                                        </div>
+                                        <div class="img-overlay">
+                                            <div class="font-img">
+                                                <a href="{% url 'index'  %}" class="btn btn-white border-1 ml-1 anas" style="max-width: 2.3rem;"><i class="fas fa-cart-shopping"></i></a>
+                                            </div>
+                                            <div class="font-rating">
+                                                <small><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star-half-stroke anas"></i></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <p class="card-text"><small><a href="" class="anak text-muted text-decoration-none">{{item.drug_type|title}}</a></small></p>
+                                        <h5 class="card-title"><a href="{% url 'details' item.id item.slug  %}" class="anak text-decoration-none"><strong>{{item.product|title}}</strong></a></h5>
+                                        <p class="card-text anak"><strong>£{{item.price}}</strong></p>
+                                        <!-- <p><a href="" canakn-primary text-decoration-none text-white">View All</a></p> -->
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="shop-prod">
+                    <div class="d-flex">
+                        <h4 class="prod"><strong>Cough,Flu and Cold</strong></h4><p><a href="{% url 'all_drugs' %}" class="text-decoration-none prods">see more...</a></p>
+                    </div>
+                    &nbsp; &nbsp;
+                    <div class="card-deck">
+                        {% if c_f_c %}
+                            {% for item in c_f_c %}
+                        
+                                <div class="card border-0">
+                                    <div class="all-overlay">
+                                        <div class="parent-overlay">
+                                            <img src="{{item.image.url}}" class="card-img-top" alt="..." height="200" width="290">
+                                        </div>
+                                        <div class="img-overlay">
+                                            <div class="font-img">
+                                                <a href="{% url 'index'  %}" class="btn btn-white border-1 ml-1 anas" style="max-width: 2.3rem;"><i class="fas fa-cart-shopping"></i></a>
+                                            </div>
+                                            <div class="font-rating">
+                                                <small><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star-half-stroke anas"></i></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <p class="card-text"><small><a href="" class="anak text-muted text-decoration-none">{{item.drug_type|title}}</a></small></p>
+                                        <h5 class="card-title"><a href="{% url 'details' item.id item.slug  %}" class="anak text-decoration-none"><strong>{{item.product|title}}</strong></a></h5>
+                                        <p class="card-text anak"><strong>£{{item.price}}</strong></p>
+                                        <!-- <p><a href="" canakn-primary text-decoration-none text-white">View All</a></p> -->
+                                    </div>
+                                </div>   
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+
+
+                <div class="shop-prod">
+                    <div class="d-flex">
+                        <h4 class="prod"><strong>Multivitamins & Supplements</strong></h4><p><a href="{% url 'all_drugs' %}" class="text-decoration-none prods">see more...</a></p>
+                    </div>
+                    &nbsp; &nbsp;
+                    <div class="card-deck">
+                        {% if supplements %}
+                            {% for item in supplements %}
+                        
+                                <div class="card border-0">
+                                    <div class="all-overlay">
+                                        <div class="parent-overlay">
+                                            <img src="{{item.image.url}}" class="card-img-top" alt="..." height="200" width="290">
+                                        </div>
+                                        <div class="img-overlay">
+                                            <div class="font-img">
+                                                <a href="{% url 'index'  %}" class="btn btn-white border-1 ml-1 anas" style="max-width: 2.3rem;"><i class="fas fa-cart-shopping"></i></a>
+                                            </div>
+                                            <div class="font-rating">
+                                                <small><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star ml-1 anas"></i><i class="fas fa-star-half-stroke anas"></i></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body text-center">
+                                        <p class="card-text"><small><a href="" class="anak text-muted text-decoration-none">{{item.drug_type|title}}</a></small></p>
+                                        <h5 class="card-title"><a href="{% url 'details' item.id item.slug  %}" class="anak text-decoration-none"><strong>{{item.product|title}}</strong></a></h5>
+                                        <p class="card-text anak"><strong>£{{item.price}}</strong></p>
+                                        <!-- <p><a href="" canakn-primary text-decoration-none text-white">View All</a></p> -->
+                                    </div>
+                                </div>   
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                <div class="container">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-transparent" data-toggle="modal" data-target="#exampleModalScrollable1">
+                        <i class="fas fa-magnifying-glass anak"></i>
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalScrollable1" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div class="seach-bar">
+                                        <!-- seach bar code -->
+                                        <form class="form-inline my-2 my-lg-0" method="POST" action="{% url 'searched' %}">
+                                            {% csrf_token %}
+                                            <input class="form-control w-75" name="itemsearch" type="search" placeholder="Search" aria-label="Search">
+                                            <button class="btn mi" type="submit">Search</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn mi" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent">
+                        <h4 class="prod"><strong>RECENT <span class="anak">POSTS</span></strong></h4>
+                        <small>Provide Comprehensive</small>
+                        <hr>
+                        <div class="d-flex mb-3 ">
+                            <img src="{% static '' %}image/bg_2.jpg" class="image-fluid" height="80" width="80">
+                            <div class="til ml-3">
+                                <small class="card-text anak">September 12, 2017</small> <br>
+                                <span class="card-title"><a href="#" class="prod text-decoration-none" style="font-size: small;"><strong>Role of Genetics in Treating Low-grade Glioma</strong></a></span>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3 ">
+                            <img src="{% static '' %}image/bg_2.jpg" class="image-fluid" height="80" width="80">
+                            <div class="til ml-3">
+                                <small class="card-text anak">September 12, 2017</small><br>
+                                <span class="card-title"><a href="#" class="prod text-decoration-none" style="font-size: small;"><strong>Role of Genetics in Treating Low-grade Glioma</strong></a></span>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3 ">
+                            <img src="{% static '' %}image/bg_2.jpg" class="image-fluid" height="80" width="80">
+                            <div class="til ml-3">
+                                <small class="card-text anak">September 12, 2017</small><br>
+                                <span class="card-title"><a href="#" class="prod text-decoration-none" style="font-size: small;"><strong>Role of Genetics in Treating Low-grade Glioma</strong></a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+    
+
+
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}
+    

@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% load humanize %}
+
+
+<!-- title section -->
+{% block title %}| Pricing{% endblock title %}
+
+
+<!-- upper header section -->
+{% block header %} {% include "header.html" %} {% endblock header %}
+
+
+<!-- banner section -->
+{% block banner %}
+
+{% endblock banner %}
+
+<!-- content section -->
+{% block content %}
+<div class="pricing">
+    <div class="pricing-list">
+        <br><br><br>
+        <div class="container pricing-box pt-5 mt-5">
+            <div class="box1 text-center" data-aos="fade-up" data-aos-duration="1000"> <br>
+                <h3 class="pt-4"><b>INDIVIDUAL</b></h3>                
+                {% if individual %}
+                    {% for item in individual %}
+                        <p class="tr mt-4"><b class="tr text-danger" style="font-size: 1.8rem;">£{{item.subscription_price}}</b><small class="tr text-muted">/per year</small></p>                      
+                    {% endfor %}                    
+                {% endif %}
+                <p class="mt-4">Diagnostic Services</p>
+                <p class="mt-4">Primary Dental Care</p>
+                <p class="mt-4">Professional Consultation</p>
+                <p class="mt-4">Immunization For Children</p>
+                <p class="mt-4 pb-5 mb-3">Unlimited Chat and Phone Calls <br> with Medical Doctors</p>
+                <!-- <a href="{% url 'index' %}" class="w-50 pricin-but btn text-decoration-none"><strong>GET OFFER</strong></a> -->
+                {% if individual %}
+                    {% for item in individual %}
+                        <button class="w-50 pricin-but "><a href="{% url 'checkout_sub' item.id %}" class="btn text-decoration-none"><strong>GET OFFER</strong></a></button>
+                    {% endfor %}                    
+                {% endif %}
+
+            </div>
+            <div class="box1 text-center" data-aos="fade-up" data-aos-duration="1500"> <br>
+                <h3 class="tr pt-4"><b>FAMILY</b></h3>
+                {% if family %}
+                    {% for item in family %}
+                        <p class="tr mt-4"><b class="tr text-danger" style="font-size: 1.8rem;">£{{item.subscription_price}}</b><small class="tr text-muted">/per year</small></p>
+                    {% endfor %}                    
+                {% endif %}
+                <p class="mt-4">Diagnostic Services</p>
+                <p class="mt-4">Primary Dental Care</p>
+                <p class="mt-4">Professional Consultation</p>
+                <p class="mt-4">Immunization For Children</p>
+                <p class="mt-4 pb-5 mb-3">Unlimited Chat and Phone Calls <br> with Medical Doctors</p>
+                <!-- <a  href="{% url 'index' %}"class="w-50  pricin-but btn text-decoration-none"><strong>GET OFFER</strong></a> -->
+                {% if family %}
+                    {% for item in family %}
+                        <button class="w-50 pricin-but "><a href="{% url 'checkout_sub' item.id %}" class="btn text-decoration-none"><strong>GET OFFER</strong></a></button>
+                    {% endfor %}                    
+                {% endif %}
+
+
+            </div>
+            <div class="box1 text-center" data-aos="fade-up" data-aos-duration="2500"> <br>
+                <h3 class="tr pt-4"><b>PREMIUM</b></h3>
+                {% if premium %}
+                    {% for item in premium %}
+                    <p class="tr mt-4"><b class="tr text-danger" style="font-size: 1.8rem;">£{{item.subscription_price}}</b><small class="tr text-muted">/per year</small></p>
+                    {% endfor %}                    
+                {% endif %}
+                <p class="mt-4">Diagnostic Services</p>
+                <p class="mt-4">Primary Dental Care</p>
+                <p class="mt-4">Professional Consultation</p>
+                <p class="mt-4">Immunization For Children</p>
+                <p class="mt-4 pb-5 mb-3">Unlimited Chat and Phone Calls <br> with Medical Doctors</p>
+                <!-- <a  href="{% url 'index' %}"class="w-50  pricin-but btn text-decoration-none"><strong>GET OFFER</strong></a> -->
+                {% if premium %}
+                    {% for item in premium %}
+                        <button class="w-50 pricin-but "><a href="{% url 'checkout_sub' item.id %}" class="btn text-decoration-none"><strong>GET OFFER</strong></a></button>
+                    {% endfor %}                    
+                {% endif %}
+
+            </div>
+            <div class="box1 text-center" data-aos="fade-up" data-aos-duration="2000"> <br>
+                <h3 class="tr pt-4"><b>HMO</b></h3>
+                {% if hmo %}
+                    {% for item in hmo %}
+                    <p class="tr mt-4"><b class="tr text-danger" style="font-size: 1.8rem;">£{{item.subscription_price}}</b><small class="tr text-muted">/per year</small></p>
+                    {% endfor %}                    
+                {% endif %}
+                <p class="mt-4">Diagnostic Services</p>
+                <p class="mt-4">Primary Dental Care</p>
+                <p class="mt-4">Professional Consultation</p>
+                <p class="mt-4">Immunization For Children</p>
+                <p class="mt-4 pb-5 mb-3">Unlimited Chat and Phone Calls <br> with Medical Doctors</p>
+                <!-- <a  href="{% url 'index' %}"class="w-50  pricin-but btn text-decoration-none"><strong>GET OFFER</strong></a> -->
+                {% if hmo %}
+                    {% for item in hmo %}
+                        <button class="w-50 pricin-but"><a href="{% url 'checkout_sub' item.id %}" class="btn text-decoration-none"><strong>GET OFFER</strong></a></button>
+                    {% endfor %}                    
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+<!-- footer content -->
+{% block footer %} {% include 'footer.html' %} {% endblock footer %}
